@@ -39,6 +39,8 @@ filetype plugin indent on    " required
 " Show status bar
 set laststatus=2
 " Adjust color of lightline
+" Add export TERM=xterm-256color to .basrc if
+" lightline isn't colored properly
 if !has('gui_running')
   set t_Co=256
 endif
