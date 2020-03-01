@@ -1,11 +1,55 @@
-" Helps force plug-ins to load correctly when it is turned back on below.
+" be iMproved, required
+set nocompatible
+" required
 filetype off
 
-" Turn on syntax highlighting
-syntax on
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" For plug-ins to load correctly
-filetype plugin indent on
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" solarized colorscheme
+Plugin 'micha/vim-colors-solarized'
+
+" lightline status bar
+Plugin 'itchyny/lightline.vim'
+
+" NERD Tree plugin for file browsing
+Plugin 'preservim/nerdtree'
+
+" All Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+" filetype plugin on
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put non-Plugin stuff after this line
+
+" Show status bar
+set laststatus=2
+" Adjust color of lightline
+if !has('gui_running')
+  set t_Co=256
+endif
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
+" Get rid of -- INSERT -- (already in lightline)
+set noshowmode
+
+" Map NERD Tree to <F6>
+map <F6> :NERDTreeToggle<CR>
 
 " Turn off modelines
 set modelines=0
@@ -26,9 +70,6 @@ set backspace=indent,eol,start
 
 " Speed up scrolling in Vim
 set ttyfast
-
-" Status bar
-set laststatus=2
 
 " Display options
 set showmode
@@ -60,7 +101,6 @@ set smartcase
 " Useful for copying large amounts of data between files.
 set viminfo='100,<9999,s100
 
-filetype plugin indent on
 " Show existing tab with 2 spaces width
 set tabstop=2
 " When indenting with '>', use 2 spaces width
@@ -73,5 +113,5 @@ set expandtab
 " Shortcut ,<space> clears highlighting
 nnoremap <silent> ,<space> :let @/=""<CR>
 
-"Remove all trailing whitespace by pressing F5
+" Shortcut <F5> deletes all trailing whitespace
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
