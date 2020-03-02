@@ -1,25 +1,31 @@
-" be iMproved, required
+" Be iMproved, required
 set nocompatible
-" required
+" Required
 filetype off
 
-" set the runtime path to include Vundle and initialize
+" Remap leader key to <space>
+let mapleader = ","
+
+" Set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" Alternatively, pass a path where Vundle should install plugins
+" Call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
+" Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" solarized colorscheme
+" Solarized colorscheme
 Plugin 'micha/vim-colors-solarized'
 
-" lightline status bar
+" Lightline status bar
 Plugin 'itchyny/lightline.vim'
 
 " NERD Tree plugin for file browsing
 Plugin 'preservim/nerdtree'
+
+" NERD Commenter for effective code commenting
+Plugin 'preservim/nerdcommenter'
 
 " All Plugins must be added before the following line
 call vundle#end()            " required
@@ -33,7 +39,7 @@ filetype plugin indent on    " required
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
-" see :h vundle for more details or wiki for FAQ
+" See :h vundle for more details or wiki for FAQ
 " Put non-Plugin stuff after this line
 
 " Show status bar
@@ -52,6 +58,17 @@ set noshowmode
 
 " Map NERD Tree to <F6>
 map <F6> :NERDTreeToggle<CR>
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
 
 " Turn off modelines
 set modelines=0
