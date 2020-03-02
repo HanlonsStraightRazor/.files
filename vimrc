@@ -45,7 +45,6 @@ filetype plugin indent on    " required
 " Show status bar
 set laststatus=2
 " Adjust color of lightline
-" Add export TERM=xterm-256color to .basrc if
 " lightline isn't colored properly
 if !has('gui_running')
   set t_Co=256
@@ -55,6 +54,8 @@ let g:lightline = {
       \ }
 " Get rid of -- INSERT -- (already in lightline)
 set noshowmode
+" Turn on syntax highlighting
+syntax on
 
 " Map NERD Tree to <F6>
 map <F6> :NERDTreeToggle<CR>
