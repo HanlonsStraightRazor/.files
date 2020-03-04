@@ -135,3 +135,8 @@ nnoremap <silent> ,<space> :let @/=""<CR>
 
 " Shortcut <F5> deletes all trailing whitespace
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
+" Remap <Esc> to kj in insert mdoe
+inoremap kj <Esc>
+" Remap Ctrl-c to kj in command mode
+cnoremap kj <C-c>
