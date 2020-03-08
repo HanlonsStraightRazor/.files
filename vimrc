@@ -140,3 +140,6 @@ nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 inoremap kj <Esc>
 " Remap Ctrl-c to kj in command mode
 cnoremap kj <C-c>
+
+" ,* gets number of occurrences of word under cursor
+map ,* *<C-O>:%s///gn<CR>
