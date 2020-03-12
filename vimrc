@@ -27,6 +27,9 @@ Plugin 'preservim/nerdtree'
 " NERD Commenter for effective code commenting
 Plugin 'preservim/nerdcommenter'
 
+" Auto pairs for automatic braces
+Plugin 'jiangmiao/auto-pairs'
+
 " All Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
