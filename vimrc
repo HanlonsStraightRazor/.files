@@ -95,7 +95,6 @@ set backspace=indent,eol,start
 set ttyfast
 
 " Display options
-set showmode
 set showcmd
 
 " Highlight matching pairs of brackets. Use the '%' character to jump between them.
