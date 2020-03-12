@@ -15,9 +15,6 @@ call vundle#begin()
 " Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Solarized colorscheme
-Plugin 'micha/vim-colors-solarized'
-
 " Lightline status bar
 Plugin 'itchyny/lightline.vim'
 
@@ -26,10 +23,8 @@ Plugin 'preservim/nerdtree'
 
 " NERD Commenter for effective code commenting
 " <leader>cc comments current line or visual selection
+" <leader>cu uncomments current line or visual selection
 Plugin 'preservim/nerdcommenter'
-
-" Auto pairs for automatic braces
-Plugin 'jiangmiao/auto-pairs'
 
 " All Plugins must be added before the following line
 call vundle#end()            " required
@@ -48,18 +43,12 @@ filetype plugin indent on    " required
 
 " Show status bar
 set laststatus=2
-" Adjust color of lightline
-" lightline isn't colored properly
-if !has('gui_running')
-  set t_Co=256
-endif
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ }
 " Get rid of -- INSERT -- (already in lightline)
 set noshowmode
 " Turn on syntax highlighting
-syntax on
+syntax enable
+" Pipboy 3000 colorscheme
+colorscheme pipboy3000-green
 
 " Map NERD Tree to <F6>
 map <F6> :NERDTreeToggle<CR>
@@ -120,6 +109,11 @@ set ignorecase
 " Include only uppercase words with uppercase search terms
 set smartcase
 
+" Toggle spell checker with <leader>s
+nnoremap <leader>s :set spell!
+" Fix spelling with <leader>f
+nnoremap <leader>f 1z=
+
 " Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data.
 " Useful for copying large amounts of data between files.
 set viminfo='100,<9999,s100
@@ -143,6 +137,8 @@ nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 inoremap kj <Esc>
 " Remap to kj Ctrl-c in command mode
 cnoremap kj <C-c>
+" Get out of visual mode with kj
+vnoremap kj <Esc>gV
 
 " <leader>* gets number of occurrences of word under cursor
 map <leader>* *<C-O>:%s///gn<CR>
