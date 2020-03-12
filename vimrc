@@ -25,6 +25,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'preservim/nerdtree'
 
 " NERD Commenter for effective code commenting
+" <leader>cc comments current line or visual selection
 Plugin 'preservim/nerdcommenter'
 
 " Auto pairs for automatic braces
@@ -104,8 +105,8 @@ set matchpairs+=<:>
 set list
 set listchars=tab:>\ ,trail:*,extends:#,nbsp:.
 
-" Show line numbers
-set number
+" Show current line number and relative line numbers
+set number relativenumber
 
 " Encoding
 set encoding=utf-8
@@ -132,16 +133,16 @@ set softtabstop=2
 " On pressing tab, insert 2 spaces
 set expandtab
 
-" Shortcut ,<space> clears highlighting
-nnoremap <silent> ,<space> :let @/=""<CR>
+" Shortcut <leader><space> clears highlighting
+nnoremap <silent> <leader><space> :let @/=""<CR>
 
 " Shortcut <F5> deletes all trailing whitespace
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
-" Remap <Esc> to kj in insert mdoe
+" Remap to kj <Esc> in insert mdoe
 inoremap kj <Esc>
-" Remap Ctrl-c to kj in command mode
+" Remap to kj Ctrl-c in command mode
 cnoremap kj <C-c>
 
-" ,* gets number of occurrences of word under cursor
-map ,* *<C-O>:%s///gn<CR>
+" <leader>* gets number of occurrences of word under cursor
+map <leader>* *<C-O>:%s///gn<CR>
