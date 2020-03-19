@@ -1,10 +1,30 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" A Good Vimrc
+" Author: CSharpCheddar
+" Version: 2.0
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Important
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Remap leader key to <space>
+let mapleader = " "
+
+" Turn on syntax highlighting
+syntax enable
+" Pipboy 3000 colorscheme
+colorscheme pipboy3000-green
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin Installation
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Be iMproved, required
 set nocompatible
 " Required
 filetype off
 
-" Remap leader key to <space>
-let mapleader = ","
 
 " Set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -34,25 +54,30 @@ filetype plugin indent on    " required
 
 " Brief help
 " :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginInstall    - installs plugins; append `!`
+"                     to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" :PluginClean      - confirms removal of unused plugins;
+"                     append `!` to auto-approve removal
 "
 " See :h vundle for more details or wiki for FAQ
 " Put non-Plugin stuff after this line
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Lightline
 " Show status bar
 set laststatus=2
 " Get rid of -- INSERT -- (already in lightline)
 set noshowmode
-" Turn on syntax highlighting
-syntax enable
-" Pipboy 3000 colorscheme
-colorscheme pipboy3000-green
 
+" NERD Tree
 " Map NERD Tree to <F6>
 map <F6> :NERDTreeToggle<CR>
 
+" NERD Commenter
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified multi-line comments
@@ -64,59 +89,59 @@ let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
-" Turn off modelines
-set modelines=0
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Leader Remaps
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Automatically wrap text that extends beyond the screen length
-set wrap
+" Toggle spell checker with <leader>s
+nnoremap <leader>s :set spell!<CR>
+" Fix spelling with <leader>f
+nnoremap <leader>f 1z=
 
-" Vim's auto indentation feature does not work properly with text copied from outside of Vim.
-" Press the <F2> key to toggle paste mode on/off.
-nnoremap <F2> :set invpaste paste?<CR>
-imap <F2> <C-0>:set invpaste paste?<CR>
-set pastetoggle=<F2>
+" Shortcut <leader><space> clears highlighting
+nnoremap <silent> <leader>h :let @/=""<CR>
 
-" Display 5 lines above/below the cursor when scrolling with a mouse
-set scrolloff=5
-" Fixes common backspace problems
-set backspace=indent,eol,start
+" Shortcut <leader>w deletes all trailing whitespace
+nnoremap <leader>w :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
-" Speed up scrolling in Vim
-set ttyfast
+" <leader>* gets number of occurrences of word under cursor
+map <leader>* *<C-O>:%s///gn<CR>
 
-" Display options
-set showcmd
+"
+" Snippets
+"
 
-" Highlight matching pairs of brackets. Use the '%' character to jump between them.
-set matchpairs+=<:>
+" Java main class and method
+nnoremap <leader>java :-1read ./snippets/java.java<CR>jo<Tab>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Other Remaps
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Remap to kj <Esc> in insert mdoe
+inoremap kj <Esc>
+" Remap to kj Ctrl-c in command mode
+cnoremap kj <C-c>
+" Get out of visual mode with kj
+vnoremap kj <Esc>gV
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" New Commands
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Create tags file
+" ^] jumps to tag under cursor
+" g^] for ambiguous tags
+" ^t jumps up tag stack
+command! MakeTags !ctags -R .
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Spacing
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Display different types of white spaces
 set list
 set listchars=tab:>\ ,trail:*,extends:#,nbsp:.
-
-" Show current line number and relative line numbers
-set number relativenumber
-
-" Encoding
-set encoding=utf-8
-
-" Highlight matching search patterns
-set hlsearch
-" Enable incremental search
-set incsearch
-" Include matching uppercase words with lowercase search term
-set ignorecase
-" Include only uppercase words with uppercase search terms
-set smartcase
-
-" Toggle spell checker with <leader>s
-nnoremap <leader>s :set spell!
-" Fix spelling with <leader>f
-nnoremap <leader>f 1z=
-
-" Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data.
-" Useful for copying large amounts of data between files.
-set viminfo='100,<9999,s100
 
 " Show existing tab with 2 spaces width
 set tabstop=2
@@ -127,18 +152,69 @@ set softtabstop=2
 " On pressing tab, insert 2 spaces
 set expandtab
 
-" Shortcut <leader><space> clears highlighting
-nnoremap <silent> <leader><space> :let @/=""<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Searching
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Shortcut <F5> deletes all trailing whitespace
-nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+" Highlight matching search patterns
+set hlsearch
+" Enable incremental search
+set incsearch
+" Include matching uppercase words with lowercase search term
+set ignorecase
+" Include only uppercase words with uppercase search terms
+set smartcase
 
-" Remap to kj <Esc> in insert mdoe
-inoremap kj <Esc>
-" Remap to kj Ctrl-c in command mode
-cnoremap kj <C-c>
-" Get out of visual mode with kj
-vnoremap kj <Esc>gV
+" Search into subfolders and do tab-completion
+set path+=**
+" Display matching files on tab-complete
+set wildmenu
 
-" <leader>* gets number of occurrences of word under cursor
-map <leader>* *<C-O>:%s///gn<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Accessibility
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Automatically wrap text that extends beyond the screen length
+set wrap
+
+" Display 5 lines above/below the cursor when scrolling with a mouse
+set scrolloff=5
+
+" Fixes common backspace problems
+set backspace=indent,eol,start
+
+" Speed up scrolling in Vim
+set ttyfast
+
+" Show current line number and relative line numbers
+set number relativenumber
+
+" Highlight matching pairs of angle brackets.
+" Use the '%' character to jump between them.
+set matchpairs+=<:>
+
+" Display options
+set showcmd
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Miscellaneous
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Turn off modelines
+set modelines=0
+
+" Vim's auto indentation feature does not work
+" properly with text copied from outside of Vim.
+" Press the <F2> key to toggle paste mode on/off.
+nnoremap <F2> :set invpaste paste?<CR>
+imap <F2> <C-0>:set invpaste paste?<CR>
+set pastetoggle=<F2>
+
+" Encoding
+set encoding=utf-8
+
+" Store info from no more than 100 files at a time,
+" 9999 lines of text, 100kb of data.
+" Useful for copying large amounts of data between files.
+set viminfo='100,<9999,s100
+
