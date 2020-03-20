@@ -41,10 +41,22 @@ Plugin 'itchyny/lightline.vim'
 " NERD Tree plugin for file browsing
 Plugin 'preservim/nerdtree'
 
-" NERD Commenter for effective code commenting
-" <leader>cc comments current line or visual selection
-" <leader>cu uncomments current line or visual selection
-Plugin 'preservim/nerdcommenter'
+" tComment commenter
+Plugin 'tomtom/tcomment_vim'
+
+" Syntastic lint checker
+Plugin 'vim-syntastic/syntastic'
+
+" Supertab for insert mode tab completion
+Plugin 'ervandew/supertab'
+
+" ZoomWin for expanding and collapsing splits
+Plugin 'ZoomWin'
+
+" Surround.vim for surround things with other things
+" Works via adjective 's' in normal mode
+" Ex. cs"' changes surrounding "s to 's
+Plugin 'tpope/vim-surround'
 
 " All Plugins must be added before the following line
 call vundle#end()            " required
@@ -68,26 +80,24 @@ filetype plugin indent on    " required
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Lightline
-" Show status bar
+" Show status line
 set laststatus=2
 " Get rid of -- INSERT -- (already in lightline)
 set noshowmode
 
 " NERD Tree
-" Map NERD Tree to <F6>
-map <F6> :NERDTreeToggle<CR>
+" Map NERD Tree to <F5>
+map <F5> :NERDTreeToggle<CR>
 
-" NERD Commenter
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-" Enable NERDCommenterToggle to check all selected lines is commented or not
-let g:NERDToggleCheckAllLines = 1
+" Syntastic recommended default configs
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Leader Remaps
@@ -195,6 +205,9 @@ set matchpairs+=<:>
 
 " Display options
 set showcmd
+
+" Color column w/o column (yells at you for any line over 80 characters long)
+au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Miscellaneous
