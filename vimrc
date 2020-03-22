@@ -51,6 +51,7 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'ervandew/supertab'
 
 " ZoomWin for expanding and collapsing splits
+" <C-w>o zooms in and out of selected split
 Plugin 'ZoomWin'
 
 " Surround.vim for surround things with other things
