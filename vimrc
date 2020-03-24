@@ -109,8 +109,8 @@ nnoremap <leader>s :set spell!<CR>
 " Fix spelling with <leader>f
 nnoremap <leader>f 1z=
 
-" Shortcut <leader><space> clears highlighting
-nnoremap <silent> <leader>h :let @/=""<CR>
+" Shortcut <leader>h clears highlighting
+nnoremap <leader>h :noh<CR>
 
 " Shortcut <leader>w deletes all trailing whitespace
 nnoremap <leader>w :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
