@@ -95,7 +95,8 @@ set noshowmode
 " Map NERD Tree to <F5>
 map <F5> :NERDTreeToggle<CR>
 
-" Syntastic recommended default configs
+" Syntastic
+" Recommended default settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -104,6 +105,13 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" tcomment basic key bindings
+" gc{motion}         :: Toggle comments (for small comments within one line
+"                       the &filetype_inline style will be used, if defined)
+" gc<Count>c{motion} :: Toggle comment with count argument
+"                       (see|tcomment#Comment()|)
+" gcc                :: Toggle comment for the current line
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Leader Remaps
