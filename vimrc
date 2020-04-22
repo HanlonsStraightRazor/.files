@@ -92,8 +92,8 @@ set laststatus=2
 set noshowmode
 
 " NERD Tree
-" Map NERD Tree to <F5>
-map <F5> :NERDTreeToggle<CR>
+" Map NERD Tree to <leader>n
+map <leader>n :NERDTreeToggle<CR>
 
 " Syntastic
 " Recommended default settings
@@ -117,19 +117,22 @@ let g:syntastic_check_on_wq = 0
 " Leader Remaps
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Toggle spell checker with <leader>s
+" <leader>s toggles spell checker
 nnoremap <leader>s :set spell!<CR>
-" Fix spelling with <leader>f
-nnoremap <leader>f 1z=
+" <leader>f fixes spelling
+nnoremap <leader>f z=
 
-" Shortcut <leader>h clears highlighting
+" <leader>h clears highlighting
 nnoremap <leader>h :noh<CR>
 
-" Shortcut <leader>w deletes all trailing whitespace
+" <leader>w deletes all trailing whitespace
 nnoremap <leader>w :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " <leader>* gets number of occurrences of word under cursor
-map <leader>* *<C-O>:%s///gn<CR>
+nnoremap <leader>* *<C-O>:%s///gn<CR>
+
+" <leader>t opens a terminal in a vertical split
+nnoremap <leader>t :vert ter<CR>
 
 "
 " Snippets
@@ -239,6 +242,9 @@ set pastetoggle=<F2>
 
 " Encoding
 set encoding=utf-8
+
+" Set spell checker language
+set spelllang=en_us
 
 " Store info from no more than 100 files at a time,
 " 9999 lines of text, 100kb of data.
