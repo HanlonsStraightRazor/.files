@@ -226,6 +226,10 @@ set showcmd
 " Color column w/o column (yells at you for any line over 80 characters long)
 au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
+" Automatically save and load views (good for saving folds)
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Miscellaneous
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
