@@ -64,6 +64,13 @@ Plugin 'ZoomWin'
 " Ex. cs"' changes surrounding "s to 's
 Plugin 'tpope/vim-surround'
 
+" Tagbar for viewing dynamically generated class outlines
+Plugin 'majutsushi/tagbar'
+
+" JSHint for JavaScript syntax checking
+" Usage: JSHint {file}
+Plugin 'walm/jshint.vim'
+
 " All Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -92,7 +99,7 @@ set laststatus=2
 set noshowmode
 
 " NERD Tree
-" Map NERD Tree to <leader>n
+" Toggle NERDTree with <leader>n
 map <leader>n :NERDTreeToggle<CR>
 
 " Syntastic
@@ -112,6 +119,10 @@ let g:syntastic_check_on_wq = 0
 " gc<Count>c{motion} :: Toggle comment with count argument
 "                       (see|tcomment#Comment()|)
 " gcc                :: Toggle comment for the current line
+
+" Tagbar
+" Toggle Tagbar with <leader>b
+map <leader>b :TagbarToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Leader Remaps
