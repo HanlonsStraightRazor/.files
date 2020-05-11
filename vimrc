@@ -52,9 +52,6 @@ Plugin 'preservim/nerdtree'
 " tComment commenter
 Plugin 'tomtom/tcomment_vim'
 
-" Syntastic lint checker
-Plugin 'vim-syntastic/syntastic'
-
 " Supertab for insert mode tab completion
 Plugin 'ervandew/supertab'
 
@@ -100,12 +97,6 @@ set noshowmode
 " NERD Tree
 " Toggle NERDTree with <leader>n
 map <leader>n :NERDTreeToggle<CR>
-
-" Syntastic
-" Recommended default settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
