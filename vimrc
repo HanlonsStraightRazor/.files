@@ -16,6 +16,9 @@
 " Remap leader key to <space>
 let mapleader = " "
 
+" Automatically reloads vimrc when saved
+autocmd! bufwritepost $MYVIMRC source %
+
 " Turn on syntax highlighting
 syntax enable
 " Pipboy 3000 colorscheme
@@ -189,6 +192,12 @@ set shiftwidth=2
 set softtabstop=2
 " On pressing tab, insert 2 spaces
 set expandtab
+" Round indent to multiples of shiftwidth
+set shiftround
+
+" Don't lose highlighting when indenting with < and >
+vnoremap < <gv
+vnoremap > >gv
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Searching
@@ -241,6 +250,12 @@ au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 
+" Move to windows easier with <C-h/j/k/l>
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Miscellaneous
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -254,6 +269,8 @@ set modelines=0
 nnoremap <F2> :set invpaste paste?<CR>
 imap <F2> <C-0>:set invpaste paste?<CR>
 set pastetoggle=<F2>
+" Make clipboard have expected behavior
+set clipboard=unnamed
 
 " Encoding
 set encoding=utf-8
