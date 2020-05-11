@@ -70,10 +70,6 @@ Plugin 'tpope/vim-surround'
 " Tagbar for viewing dynamically generated class outlines
 Plugin 'majutsushi/tagbar'
 
-" JSHint for JavaScript syntax checking
-" Usage: JSHint {file}
-Plugin 'walm/jshint.vim'
-
 " All Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
