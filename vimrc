@@ -46,9 +46,6 @@ Plugin 'VundleVim/Vundle.vim'
 " Lightline status bar
 Plugin 'itchyny/lightline.vim'
 
-" NERD Tree plugin for file browsing
-Plugin 'preservim/nerdtree'
-
 " tComment commenter
 Plugin 'tomtom/tcomment_vim'
 
@@ -94,15 +91,6 @@ set laststatus=2
 " Get rid of -- INSERT -- (already in lightline)
 set noshowmode
 
-" NERD Tree
-" Toggle NERDTree with <leader>n
-map <leader>n :NERDTreeToggle<CR>
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
 " tcomment basic key bindings
 " gc{motion}         :: Toggle comments (for small comments within one line
 "                       the &filetype_inline style will be used, if defined)
@@ -112,7 +100,47 @@ let g:syntastic_check_on_wq = 0
 
 " Tagbar
 " Toggle Tagbar with <leader>b
-map <leader>b :TagbarToggle<CR>
+nnoremap <leader>b :TagbarToggle<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Netrw Configurations
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Toggle Netrw with <leader>n
+nnoremap <leader>n :Lex<CR>
+
+" Hide dotfiles
+let ghregex='\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_list_hide=ghregex
+
+" Hide banner
+let g:netrw_banner=0
+
+" Change how Netrw displays files and directories
+" let g:netrw_liststyle=0    " Default view (directory/file name)
+" let g:netrw_liststyle=1    " Show time and size
+" let g:netrw_liststyle=2    " Show listing in 2 columns
+  let g:netrw_liststyle=3    " Show tree listing
+
+" Open vertical splits to the right
+let g:netrw_browse_split = 4
+let g:netrw_altv=1
+" Open previews in a vertical split
+let g:netrw_preview=1
+" Set default window size to 20% of the current buffer
+let g:netrw_winsize = -28
+
+" Delete Netrw's buffer once it's hidden
+autocmd FileType netrw setl bufhidden=delete
+
+" Change directory to the current buffer when opening files.
+set autochdir
+
+" Search into subfolders and do tab-completion
+set path+=**
+" Display matching files on tab-complete
+set wildmenu
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Leader Remaps
@@ -199,11 +227,6 @@ set ignorecase
 " Include only uppercase words with uppercase search terms
 set smartcase
 
-" Search into subfolders and do tab-completion
-set path+=**
-" Display matching files on tab-complete
-set wildmenu
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Accessibility
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -238,10 +261,10 @@ autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 
 " Move to windows easier with <C-h/j/k/l>
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Miscellaneous
@@ -253,8 +276,6 @@ set modelines=0
 " Vim's auto indentation feature does not work
 " properly with text copied from outside of Vim.
 " Press the <F2> key to toggle paste mode on/off.
-nnoremap <F2> :set invpaste paste?<CR>
-imap <F2> <C-0>:set invpaste paste?<CR>
 set pastetoggle=<F2>
 " Make clipboard have expected behavior
 set clipboard=unnamed
