@@ -1,8 +1,11 @@
 #!/bin/sh
 
-# Updates this repo and plugins
+################################################################################
+# Updates this repo
+################################################################################
 
+# Pull new configuration changes
 git pull
-vim +PluginClean! +PluginInstall! +qall
 
-exit 0
+# Update plugins and remove unused ones
+vim +PluginClean! +PluginInstall! +qall

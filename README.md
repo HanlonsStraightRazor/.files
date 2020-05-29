@@ -13,10 +13,10 @@ I added several bindings that make accessing common functionality much easier su
 ## Plugins
 ---
 The plugins I'm currently running are:
-    * Vundle
-    * Lightline
-    * tComment
-    * Supertab
-    * ZoomWin
-    * surround.vim
-    * tagbar
+- Vundle
+- Lightline
+- tComment
+- Supertab
+- ZoomWin
+- surround.vim
+- tagbar

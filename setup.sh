@@ -8,5 +8,5 @@
 git clone https://github.com/VundleVim/Vundle.vim.git ./bundle/Vundle.vim
 vim +PluginInstall +qall
 
-# Remove this file from working tree
+# Remove this file
 rm -- "$0"
