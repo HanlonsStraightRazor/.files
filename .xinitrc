@@ -1,6 +1,5 @@
 ################################################################################
 # My .xinitrc
-# Version: 1.0
 ################################################################################
 #   ____ ____  _                       ____ _              _     _
 #  / ___/ ___|| |__   __ _ _ __ _ __  / ___| |__   ___  __| | __| | __ _ _ __
@@ -21,8 +20,11 @@ done &
 # Set background
 nitrogen --restore &
 
-# Start service that allows transparency
+# Allows transparency
 xcompmgr -c &
+
+# Hides mouse after 3 seconds of inactivity
+unclutter --timeout 3 &
 
 # Start dynamic window manager
 exec dwm
