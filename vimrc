@@ -162,6 +162,9 @@ nnoremap <leader>* *<C-O>:%s///gn<CR>
 " <leader>t opens a terminal in a vertical split
 nnoremap <leader>t :vert ter<CR>
 
+" <leader>c compiles types supported by compile.sh to pdf
+nnoremap <leader>c :w!<Bar>!($HOME/.vim/compile.sh %:p)<CR><CR>
+
 "
 " Snippets
 "
