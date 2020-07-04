@@ -163,7 +163,7 @@ nnoremap <leader>* *<C-O>:%s///gn<CR>
 nnoremap <leader>t :vert ter<CR>
 
 " <leader>c compiles types supported by compile.sh to pdf
-nnoremap <leader>c :w!<Bar>!($HOME/.vim/compile.sh %:p)<CR><CR>
+nnoremap <leader>c :w!<Bar>silent !($HOME/.vim/compile.sh %:p)<CR>:redraw!<CR>
 
 "
 " Snippets

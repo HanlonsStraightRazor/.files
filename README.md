@@ -2,9 +2,9 @@
 ---
 Vim has some decent default settings, but I added some extra stuff to boost productivity.
 
-## Setup and Maintainence
+## Setup and Maintenance
 ---
-Clone this repo in your home directory and run the setup.sh script from within the repo to get started. I also included an update.sh script that you should run every so often to stay up to date with my latest configuration and my plugins.
+Clone this repo in your home directory and run the update.sh script from within the repo to get started. This script also updates the repo, so it should be run periodically to stay up to date.
 
 ## New Bindings
 ---
