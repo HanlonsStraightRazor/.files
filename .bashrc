@@ -18,7 +18,17 @@
 # Set prompt
 PS1='[\u@\h \W]\$ '
 
-# Make default editor Vim
+################################################################################
+# Environment Variables
+################################################################################
+
+# Less > more
+export PAGER=less
+
+# Add .scripts directory to path
+export PATH=$PATH:$HOME/.scripts
+
+# Vim's cool, so use that
 export EDITOR=vim
 
 ################################################################################
