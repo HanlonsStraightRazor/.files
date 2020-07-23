@@ -1,0 +1,11 @@
+[user]
+  name = CSharpCheddar
+  email = muellermartin98@gmail.com
+[core]
+  editor = vim
+[alias]
+  flog = log --oneline --decorate --graph
+[merge]
+  tool = vimdiff
+[credential]
+  helper = cache
