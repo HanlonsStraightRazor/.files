@@ -22,6 +22,8 @@ autocmd! bufwritepost $MYVIMRC source %
 syntax enable
 " Pipboy 3000 colorscheme
 colorscheme pipboy3000-green
+" Enable transparent background
+hi Normal guibg=NONE ctermbg=NONE
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Installation
