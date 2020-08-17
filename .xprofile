@@ -11,20 +11,14 @@
 ################################################################################
 ################################################################################
 
-# Set status bar to current date and time
-while true; do
-  xsetroot -name " $(date "+%a %d %b %Y %H:%M %Z") "
-  sleep 5s
-done &
+# Start compositor (for transparency)
+picom &
 
-# Set background
-nitrogen --restore &
-
-# Allows transparency
-xcompmgr -c &
+# Set random background image
+feh --bg-fill --randomize $HOME/.wallpaper &
 
 # Hides mouse after 3 seconds of inactivity
 unclutter --timeout 3 &
 
-# Start dynamic window manager
-exec dwm
+# Start awesome window manager
+exec awesome
