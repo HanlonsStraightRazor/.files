@@ -47,11 +47,9 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("~/.config/awesome/theme/theme.lua")
--- Add gaps between windows
-beautiful.useless_gap = 5
 
 -- This is used later as the default terminal, web browser, and editor to run.
-terminal = "st"
+terminal = "urxvt"
 browser = "firefox"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor

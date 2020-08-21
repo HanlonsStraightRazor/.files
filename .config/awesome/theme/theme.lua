@@ -1,7 +1,8 @@
 -----------------------------------------------------------------------
 --                       "Theme" awesome theme                     --
 --                         By Martin Mueller                       --
---  Adapted from the "Zenburn" awesome theme by Adrian C. (anrxc)  --
+--  Format adapted from the "Zenburn" awesome theme by Adrian C. (anrxc)  --
+--  Color scheme: Frontend Fun Forest from Gogh (https://github.com/Mayccoll/Gogh)
 -----------------------------------------------------------------------
 
 local themes_path = require("gears.filesystem").get_themes_dir()
@@ -15,26 +16,26 @@ local theme = {}
 theme.font               = "sans 12"
 
 -- {{{ Colors
-theme.fg_normal          = "#DCDCCC"
-theme.fg_focus           = "#F0DFAF"
-theme.fg_urgent          = "#CC9393"
-theme.bg_normal          = "#3F3F3F"
-theme.bg_focus           = "#1E2320"
-theme.bg_urgent          = "#3F3F3F"
+theme.fg_normal          = "#DEC165" -- foreground
+theme.fg_focus           = "#FFEAA3" -- color15
+theme.fg_urgent          = "#E6A96B" -- color14
+theme.bg_normal          = "#251200" -- background
+theme.bg_focus           = "#000000" -- color0
+theme.bg_urgent          = "#251200" -- background
 theme.bg_systray         = theme.bg_normal
 -- }}}
 
 -- {{{ Borders
-theme.useless_gap        = dpi(0)
+theme.useless_gap        = dpi(5)
 theme.border_width       = dpi(2)
-theme.border_normal      = "#3F3F3F"
-theme.border_focus       = "#6F6F6F"
-theme.border_marked      = "#CC9393"
+theme.border_normal      = "#251200" -- background
+theme.border_focus       = "#7F6A55" -- color8
+theme.border_marked      = "#E6A96B" -- color14
 -- }}}
 
 -- {{{ Titlebars
-theme.titlebar_bg_focus  = "#3F3F3F"
-theme.titlebar_bg_normal = "#3F3F3F"
+theme.titlebar_bg_focus  = "#251200" -- background
+theme.titlebar_bg_normal = "#251200" -- background
 -- }}}
 
 -- There are other variable sets
@@ -59,7 +60,7 @@ theme.titlebar_bg_normal = "#3F3F3F"
 -- }}}
 
 -- {{{ Mouse finder
-theme.mouse_finder_color = "#CC9393"
+theme.mouse_finder_color = "#E6A96B" -- color14
 -- mouse_finder_[timeout|animate_timeout|radius|factor]
 -- }}}
 

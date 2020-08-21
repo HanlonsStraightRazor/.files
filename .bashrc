@@ -39,7 +39,10 @@ export EDITOR=vim
 alias ls='ls --color=auto'
 
 # Colorful long ls
-alias ll='ls --color=auto -lAh '
+alias ll='ls --color=auto -lAh'
+
+# Load .Xresources
+alias xup='xrdb ~/.Xresources'
 
 # Dotfiles bare repo
 alias dot='/usr/bin/git --git-dir=$HOME/.files --work-tree=$HOME'
