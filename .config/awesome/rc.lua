@@ -47,6 +47,8 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("~/.config/awesome/theme/theme.lua")
+beautiful.menu_width = 200
+beautiful.menu_height = 20
 
 -- This is used later as the default terminal, web browser, and editor to run.
 terminal = "urxvt"
@@ -85,21 +87,32 @@ awful.layout.layouts = {
 -- {{{ Menu
 -- Create a launcher widget and a main menu
 myawesomemenu = {
-  { "hotkeys",
+  { "ace-voip",
     function()
       hotkeys_popup.show_help(nil, awful.screen.focused())
     end },
-  { "manual", terminal .. " -e man awesome" },
-  { "edit config", editor_cmd .. " " .. awesome.conffile },
-  { "restart", awesome.restart },
-  { "quit",
+  { "Amap", terminal .. " -e man awesome" },
+  { "Apt2", editor_cmd .. " " .. awesome.conffile },
+  { "arp-scan", awesome.restart },
+  { "Automater",
     function()
       awesome.quit()
     end },
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
+mymainmenu = awful.menu({ items = { { "Information Gathering", myawesomemenu },
+                                    { "Vulnerability Analysis", terminal },
+                                    { "Exploitation Tools", terminal },
+                                    { "Wireless Attacks", terminal },
+                                    { "Forensics Tools", terminal },
+                                    { "Web Applications", terminal },
+                                    { "Stress Testing", terminal },
+                                    { "Sniffing & Spoofing", terminal },
+                                    { "Password Attacks", terminal },
+                                    { "Maintaining Access", terminal },
+                                    { "Hardware Hacking", terminal },
+                                    { "Reverse Engineering", terminal },
+                                    { "Reporting Tools", terminal }
                                   }
                         })
 
@@ -316,10 +329,7 @@ globalkeys = gears.table.join(
             {description = "open a terminal", group = "launcher"}),
   -- Modkey+b spawns Firefox on tag 9 and switches to it.
   awful.key({ modkey,           }, "b", function ()
-              awful.spawn(browser, {
-                tag = "9",
-                switch_to_tags = true
-              })
+              awful.spawn(browser)
             end,
             {description = "open Firefox", group = "launcher"}),
   awful.key({ modkey,           }, "r", awesome.restart,
@@ -490,8 +500,15 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
+                     placement = awful.placement.no_overlap+awful.placement.no_offscreen,
+                     size_hints_honor = false
      }
+    },
+
+    -- FIXME: Figure out why this doesn't work as advertized
+    -- Firefox specific rules
+    { rule = { class = "firefox" },
+      properties = { tag = "9", switchtotag = true }
     },
 
     -- Floating clients.

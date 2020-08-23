@@ -35,6 +35,12 @@ export EDITOR=vim
 # Aliases
 ################################################################################
 
+# 3 characters = too much typing
+alias v='vim'
+
+# 4 characters = also too much typing
+alias n='nvim'
+
 # Colorful ls
 alias ls='ls --color=auto'
 
