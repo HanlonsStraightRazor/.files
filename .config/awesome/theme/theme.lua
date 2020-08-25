@@ -13,7 +13,7 @@ local theme = {}
 -- }}}
 
 -- {{{ Styles
-theme.font               = "sans 12"
+theme.font               = "mono 12"
 
 -- {{{ Colors
 theme.fg_normal          = "#DEC165" -- foreground
@@ -68,8 +68,8 @@ theme.mouse_finder_color = "#E6A96B" -- color14
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
-theme.menu_height = dpi(15)
-theme.menu_width  = dpi(100)
+theme.menu_height = dpi(20)
+theme.menu_width  = dpi(270)
 -- }}}
 
 -- {{{ Icons

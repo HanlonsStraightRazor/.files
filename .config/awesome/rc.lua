@@ -47,8 +47,6 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("~/.config/awesome/theme/theme.lua")
-beautiful.menu_width = 200
-beautiful.menu_height = 20
 
 -- This is used later as the default terminal, web browser, and editor to run.
 terminal = "urxvt"
@@ -204,7 +202,7 @@ awful.screen.connect_for_each_screen(function(s)
   set_wallpaper(s)
 
   -- Each screen has its own tag table.
-  awful.tag({ " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 " },
+  awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" },
     s, awful.layout.layouts[1])
 
   -- Create a promptbox for each screen
