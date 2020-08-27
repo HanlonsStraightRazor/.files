@@ -11,6 +11,9 @@
 ################################################################################
 ################################################################################
 
+# Build font information cache files
+fc-cache -vf
+
 # Start compositor (for transparency)
 picom &
 
@@ -18,9 +21,12 @@ picom &
 xrdb ~/.Xresources
 
 # Set random background image
-feh --bg-fill --randomize $HOME/.wallpaper
+feh --bg-fill --randomize ~/.wallpaper
 
-# Hides mouse after 3 seconds of inactivity
+# Turn on num lock
+numlockx
+
+# Hide mouse after 3 seconds of inactivity
 unclutter --timeout 3 &
 
 # Start awesome window manager
