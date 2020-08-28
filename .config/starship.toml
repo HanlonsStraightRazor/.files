@@ -1,0 +1,44 @@
+################################################################################
+# My starship config
+################################################################################
+
+# Don't print a newline at the start of the prompt
+add_newline = false
+
+# Diable modules I don't want
+[aws]
+disabled = true
+[conda]
+disabled = true
+[crystal]
+disabled = true
+[dart]
+disabled = true
+[dotnet]
+disabled = true
+[elixir]
+disabled = true
+[elm]
+disabled = true
+[erlang]
+disabled = true
+[gcloud]
+disabled = true
+[helm]
+disabled = true
+[julia]
+disabled = true
+[line_break]
+disabled = true
+[ocaml]
+disabled = true
+[singularity]
+disabled = true
+[swift]
+disabled = true
+[terraform]
+disabled = true
+[zig]
+disabled = true
+[purescript]
+disabled = true

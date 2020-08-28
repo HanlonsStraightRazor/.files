@@ -15,9 +15,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Set prompt
-PS1='[\u@\h \W]\$ '
-
 ################################################################################
 # Environment Variables
 ################################################################################
@@ -52,3 +49,10 @@ alias xup='xrdb ~/.Xresources'
 
 # Dotfiles bare repo
 alias dot='/usr/bin/git --git-dir=$HOME/.files --work-tree=$HOME'
+
+################################################################################
+# Shell Prompt (starship)
+################################################################################
+
+# Set prompt
+eval "$(starship init bash)" || PS1='\[\e[1m\]\u@\h \W$ \[\e[0m\]'
