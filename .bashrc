@@ -55,4 +55,9 @@ alias dot='/usr/bin/git --git-dir=$HOME/.files --work-tree=$HOME'
 ################################################################################
 
 # Set prompt
-eval "$(starship init bash)" || PS1='\[\e[1m\]\u@\h \W$ \[\e[0m\]'
+if [ `command -v starship` ]
+then
+  eval "$(starship init bash)"
+else
+ PS1='\[\e[1m\]\u@\h \W$ \[\e[0m\]'
+fi
