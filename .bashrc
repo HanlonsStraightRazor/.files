@@ -44,6 +44,9 @@ alias ls='ls --color=auto'
 # Colorful long ls
 alias ll='ls --color=auto -lAh'
 
+# Always run df with -h
+alias df='df -h'
+
 # Load .Xresources
 alias xup='xrdb ~/.Xresources'
 
