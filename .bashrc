@@ -41,7 +41,10 @@ alias n='nvim'
 # Colorful ls
 alias ls='ls --color=auto'
 
-# Colorful long ls
+# Colorful long ls w/o hidden files
+alias lsl='ls --color=auto -lh'
+
+# Colorful long ls w/ hidden files
 alias ll='ls --color=auto -lAh'
 
 # Always run df with -h
