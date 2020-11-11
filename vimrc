@@ -65,6 +65,9 @@ Plugin 'tpope/vim-surround'
 " Tagbar for viewing dynamically generated class outlines
 Plugin 'majutsushi/tagbar'
 
+" UltiSnips for snippets
+Plugin 'SirVer/ultisnips'
+
 " All Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -102,6 +105,15 @@ set noshowmode
 " Tagbar
 " Toggle Tagbar with <leader>b
 nnoremap <leader>b :TagbarToggle<CR>
+
+" UltiSnips
+" Edit snippets with <leader>u
+nnoremap <leader>u :UltiSnipsEdit<CR>
+" Opens UltiSnipsEdit window in a new tab instead of the current buffer
+let g:UltiSnipsEditSplit="tabdo"
+" UltiSnips has issues with these by default
+noremap <c-j> UltiSnips#JumpForwards
+noremap <c-k> UltiSnips#JumpBackwards
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Netrw Configurations
@@ -166,13 +178,6 @@ nnoremap <leader>t :vert ter<CR>
 
 " <leader>c compiles types supported by compile.sh to pdf
 nnoremap <leader>c :w!<Bar>silent !($HOME/.vim/compile.sh %:p)<CR>:redraw!<CR>
-
-"
-" Snippets
-"
-
-" Java main class and method
-nnoremap <leader>java :-1read ./snippets/java.java<CR>jo<Tab>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Other Remaps
@@ -264,11 +269,16 @@ au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 
-" Move to windows easier with <C-h/j/k/l>
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+" Move to windows easier with <Left/Down/Up/Right>
+" and move around windows easier with <C-Left/Down/Up/Right>
+nnoremap <Left> <C-w>h
+nnoremap <Down> <C-w>j
+nnoremap <Up> <C-w>k
+nnoremap <Right> <C-w>l
+nnoremap <C-Left> <C-w>H
+nnoremap <C-Down> <C-w>J
+nnoremap <C-Up> <C-w>K
+nnoremap <C-Right> <C-w>L
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Miscellaneous

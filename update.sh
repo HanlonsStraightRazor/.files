@@ -4,7 +4,6 @@
 # Sets up or updates this repo.
 ################################################################################
 
-
 # Install Vundle and all plugins (if needed)
 if [ ! -d bundle ]; then
   git clone https://github.com/VundleVim/Vundle.vim.git bundle/Vundle.vim
@@ -15,4 +14,3 @@ else
   # Update plugins and remove unused ones
   vim +PluginClean! +PluginInstall! +qall
 fi
-
