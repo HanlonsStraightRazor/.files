@@ -6,7 +6,7 @@
 ! General Appearance
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-URxvt.font: xft:mono:size=12,xft:DejaVu Sans Mono:size=12
+*.font: xft:mono:size=12,xft:DejaVu Sans Mono:size=12
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.internalBorder: 4

@@ -11,11 +11,17 @@
 ################################################################################
 ################################################################################
 
-# Build font information cache files
-fc-cache -vf
-
 # Start compositor (for transparency)
 picom &
+
+# Hide mouse after 3 seconds of inactivity
+unclutter -idle 3 &
+
+# Fix Vim colors
+USRRESOURCES=$HOME/.Xresources
+
+# Build font information cache files
+fc-cache -vf
 
 # Load .Xresources
 xrdb ~/.Xresources
@@ -25,9 +31,6 @@ feh --bg-fill --randomize ~/.wallpaper
 
 # Turn on num lock
 numlockx
-
-# Hide mouse after 3 seconds of inactivity
-unclutter --timeout 3 &
 
 # Start awesome window manager
 exec awesome
