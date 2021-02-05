@@ -1,13 +1,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " My vimrc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"   ____ ____  _                       ____ _              _     _
-"  / ___/ ___|| |__   __ _ _ __ _ __  / ___| |__   ___  __| | __| | __ _ _ __
-" | |   \___ \| '_ \ / _` | '__| '_ \| |   | '_ \ / _ \/ _` |/ _` |/ _` | '__|
-" | |___ ___) | | | | (_| | |  | |_) | |___| | | |  __/ (_| | (_| | (_| | |
-"  \____|____/|_| |_|\__,_|_|  | .__/ \____|_| |_|\___|\__,_|\__,_|\__,_|_|
-"                              |_|
-"
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Important
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -20,8 +14,6 @@ autocmd! bufwritepost $MYVIMRC source %
 
 " Turn on syntax highlighting
 syntax enable
-" Pipboy 3000 colorscheme
-colorscheme pipboy3000-green
 " Enable transparent background
 hi Normal guibg=NONE ctermbg=NONE
 
@@ -65,8 +57,14 @@ Plugin 'tpope/vim-surround'
 " Tagbar for viewing dynamically generated class outlines
 Plugin 'majutsushi/tagbar'
 
-" UltiSnips for snippets
-Plugin 'SirVer/ultisnips'
+" AsyncRun for asyncronous jobs
+Plugin 'skywind3000/asyncrun.vim'
+
+" Vim-LaTeX for better TeX a writing process
+Plugin 'vim-latex/vim-latex'
+
+" Use pywal colorscheme
+Plugin 'dylanaraps/wal.vim'
 
 " All Plugins must be added before the following line
 call vundle#end()            " required
@@ -94,6 +92,10 @@ filetype plugin indent on    " required
 set laststatus=2
 " Get rid of -- INSERT -- (already in lightline)
 set noshowmode
+" Set Lightline colorscheme
+let g:lightline = {
+  \ 'colorscheme' : 'wombat',
+  \ }
 
 " tcomment basic key bindings
 " gc{motion}         :: Toggle comments (for small comments within one line
@@ -106,14 +108,13 @@ set noshowmode
 " Toggle Tagbar with <leader>b
 nnoremap <leader>b :TagbarToggle<CR>
 
-" UltiSnips
-" Edit snippets with <leader>u
-nnoremap <leader>u :UltiSnipsEdit<CR>
-" Opens UltiSnipsEdit window in a new tab instead of the current buffer
-let g:UltiSnipsEditSplit="tabdo"
-" UltiSnips has issues with these by default
-noremap <c-j> UltiSnips#JumpForwards
-noremap <c-k> UltiSnips#JumpBackwards
+" AsyncRun
+" Run make asyncronously with <leader>m
+nnoremap <leader>m :w<CR>:AsyncRun make<CR>
+
+" Wal
+" Set colorscheme to the one provided by pywal
+colorscheme wal
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Netrw Configurations
@@ -176,8 +177,11 @@ nnoremap <leader>* *<C-O>:%s///gn<CR>
 " <leader>t opens a terminal in a vertical split
 nnoremap <leader>t :vert ter<CR>
 
-" <leader>c compiles types supported by compile.sh to pdf
-nnoremap <leader>c :w!<Bar>silent !($HOME/.vim/compile.sh %:p)<CR>:redraw!<CR>
+" <leader>c toggles quickfix window
+nnoremap <leader>c :cw<CR>
+
+" <leader>q quits
+nnoremap <leader>q :q<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Other Remaps
@@ -269,16 +273,16 @@ au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 
-" Move to windows easier with <Left/Down/Up/Right>
-" and move around windows easier with <C-Left/Down/Up/Right>
-nnoremap <Left> <C-w>h
-nnoremap <Down> <C-w>j
-nnoremap <Up> <C-w>k
-nnoremap <Right> <C-w>l
-nnoremap <C-Left> <C-w>H
-nnoremap <C-Down> <C-w>J
-nnoremap <C-Up> <C-w>K
-nnoremap <C-Right> <C-w>L
+" Move to windows easier with <C-h/j/k/l>
+" and move around windows easier with <Left/Down/Up/Right>
+nnoremap <Left> <C-w>H
+nnoremap <Down> <C-w>J
+nnoremap <Up> <C-w>K
+nnoremap <Right> <C-w>L
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Miscellaneous
