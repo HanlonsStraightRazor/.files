@@ -50,7 +50,7 @@ beautiful.init("~/.config/awesome/theme/theme.lua")
 
 -- Default applications
 terminal = "urxvt"
-browser = "firefox"
+browser = "qutebrowser"
 passman = "keepassxc"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
@@ -290,7 +290,7 @@ globalkeys = gears.table.join(
   awful.key({ modkey,           }, "x", function () awful.spawn(passman) end,
   { description = "open KeePassXC", group = "launcher" }),
   awful.key({ modkey,           }, "b", function () awful.spawn(browser) end,
-  { description = "open Firefox", group = "launcher" }),
+  { description = "open qutebrowser", group = "launcher" }),
   awful.key({ modkey            }, "p", function() menubar.show() end,
   { description = "show the launcher", group = "launcher" })
   )
@@ -408,11 +408,8 @@ awful.rules.rules = {
   },
 
   -- Mozzila software
-  { rule = { class = "firefox" },
+  { rule = { class = "qutebrowser" },
     properties = { tag = "9", switchtotag = true }
-  },
-  { rule = { class = "Thunderbird" },
-    properties = { tag = "8", switchtotag = true }
   },
 
   -- Don't add titlebars to normal clients and dialogs
