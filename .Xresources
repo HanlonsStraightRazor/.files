@@ -6,7 +6,7 @@
 ! General Appearance
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-*.font: xft:mono:size=12,xft:DejaVu Sans Mono:size=12
+URxvt.font: xft:JetBrains Mono:size=12
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.internalBorder: 4
@@ -20,7 +20,8 @@ URxvt.depth: 32
 ! Color Scheme (Frontend Fun Forest)
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-*.background: [85]#251200
+*.background: #251200
+URxvt.background: [85]#251200
 *.foreground: #DEC165
 *.color0: #000000
 *.color8: #7F6A55
