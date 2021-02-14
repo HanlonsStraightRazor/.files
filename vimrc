@@ -208,13 +208,13 @@ command! MakeTags !ctags -R .
 set list
 set listchars=tab:>\ ,trail:*,extends:#,nbsp:.
 
-" Show existing tab with 2 spaces width
-set tabstop=2
-" When indenting with '>', use 2 spaces width
-set shiftwidth=2
-" Set number of spaces inserted an deleted when tab is pressed
-set softtabstop=2
-" On pressing tab, insert 2 spaces
+" Show tabs as 4 spaces
+set tabstop=4
+" When indenting with '>', use 4 spaces
+set shiftwidth=4
+" Set number of spaces inserted and deleted when <Tab> is pressed
+set softtabstop=4
+" Insert `tabstop` number of spaces when pressing <Tab>
 set expandtab
 " Round indent to multiples of shiftwidth
 set shiftround
