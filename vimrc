@@ -3,9 +3,9 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Remap leader key to <space>
-let mapleader = " "
+let mapleader=" "
 
-" Automatically reloads vimrc when saved
+" Automatically reload vimrc when saved
 autocmd! bufwritepost $MYVIMRC source %
 
 " Turn on syntax highlighting
@@ -39,11 +39,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'tomtom/tcomment_vim'
 
 " Supertab for insert mode tab completion
-Plugin 'ervandew/supertab'
-
-" ZoomWin for expanding and collapsing splits
-" <C-w>o zooms in and out of selected split
-Plugin 'ZoomWin'
+" Plugin 'ervandew/supertab'
 
 " Surround.vim for surround things with other things
 " Works via adjective 's' in normal mode
@@ -53,10 +49,14 @@ Plugin 'tpope/vim-surround'
 " Tagbar for viewing dynamically generated class outlines
 Plugin 'majutsushi/tagbar'
 
+" fzf for fuzzy file finding
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+
 " AsyncRun for asyncronous jobs
 Plugin 'skywind3000/asyncrun.vim'
 
-" Vim-LaTeX for better TeX a writing process
+" Vim-LaTeX for a better TeX writing process
 Plugin 'vim-latex/vim-latex'
 
 " Use pywal colorscheme
@@ -89,24 +89,16 @@ set laststatus=2
 " Get rid of -- INSERT -- (already in lightline)
 set noshowmode
 " Set Lightline colorscheme
-let g:lightline = {
+let g:lightline={
   \ 'colorscheme' : 'wombat',
   \ }
 
-" tcomment basic key bindings
+" tComment basic key bindings
 " gc{motion}         :: Toggle comments (for small comments within one line
 "                       the &filetype_inline style will be used, if defined)
-" gc<Count>c{motion} :: Toggle comment with count argument
+" gc<count>c{motion} :: Toggle comment with count argument
 "                       (see|tcomment#Comment()|)
 " gcc                :: Toggle comment for the current line
-
-" Tagbar
-" Toggle Tagbar with <leader>b
-nnoremap <leader>b :TagbarToggle<CR>
-
-" AsyncRun
-" Run make asyncronously with <leader>m
-nnoremap <leader>m :w<CR>:AsyncRun make<CR>
 
 " Wal
 " Set colorscheme to the one provided by pywal
@@ -115,9 +107,6 @@ colorscheme wal
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Netrw Configurations
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Toggle Netrw with <leader>n
-nnoremap <leader>n :Lex<CR>
 
 " Hide dotfiles
 let ghregex='\(^\|\s\s\)\zs\.\S\+'
@@ -133,72 +122,77 @@ let g:netrw_banner=0
   let g:netrw_liststyle=3    " Show tree listing
 
 " Open vertical splits to the right
-let g:netrw_browse_split = 4
-let g:netrw_altv=1
+" let g:netrw_browse_split=4
+" let g:netrw_altv=1
 " Open previews in a vertical split
 let g:netrw_preview=1
 " Set default window size to 20% of the current buffer
-let g:netrw_winsize = -28
+let g:netrw_winsize=-28
 
 " Delete Netrw's buffer once it's hidden
 autocmd FileType netrw setl bufhidden=delete
 
-" Change directory to the current buffer when opening files.
-set autochdir
-
+" Don't change directory to the current buffer when opening files
+set noautochdir
 " Search into subfolders and do tab-completion
 set path+=**
 " Display matching files on tab-complete
 set wildmenu
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Leader Remaps
+" Leader Maps
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" <leader>s toggles spell checker
-nnoremap <leader>s :set spell!<CR>
-" <leader>f fixes spelling
+" Plugins
+"
+" Toggle Netrw
+nnoremap <leader>n :Lex<cr>
+" Toggle Tagbar
+nnoremap <leader>t :TagbarToggle<cr>
+" List buffers with fzf
+nnoremap <leader>b :Buffers<cr>
+" List files with fzf
+nnoremap <leader>o :Files<cr>
+" Run make asyncronously
+nnoremap <leader>m :w<cr>:AsyncRun make<cr>
+
+" Toggle spell checker
+nnoremap <leader>s :set spell!<cr>
+" Fix spelling
 nnoremap <leader>f z=
 
-" <leader>h clears highlighting
-nnoremap <leader>h :noh<CR>
+" Clear highlighting
+nnoremap <leader>h :noh<cr>
 
-" <leader>w deletes all trailing whitespace
-nnoremap <leader>w :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+" Delete all trailing whitespace
+nnoremap <leader>w :let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar><cr>
 
-" <leader>* gets number of occurrences of word under cursor
-nnoremap <leader>* *<C-O>:%s///gn<CR>
+" Get number of occurrences of word under cursor
+nnoremap <leader>* *<c-O>:%s///gn<cr>
 
-" <leader>t opens a terminal in a vertical split
-nnoremap <leader>t :vert ter<CR>
+" Toggle quickfix window
+nnoremap <leader>c :cw<cr>
 
-" <leader>c toggles quickfix window
-nnoremap <leader>c :cw<CR>
+" Quit
+nnoremap <leader>q :q<cr>
 
-" <leader>q quits
-nnoremap <leader>q :q<CR>
+" Need to remap redraw for later <c-l> remapping to work
+nnoremap <leader>l <c-l>
+" Need to unmap <c-j> too
+let g:BASH_Ctrl_j='off'
+let g:C_Ctrl_j='off'
+nnoremap <leader>j <c-j>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Other Remaps
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Remap to kj <Esc> in insert mdoe
-inoremap kj <Esc>
+" Remap to kj <esc> in insert mdoe
+inoremap kj <esc>
 " Remap to kj Ctrl-c in command mode
-cnoremap kj <C-c>
+cnoremap kj <c-c>
 " Get out of visual mode with kj
-vnoremap kj <Esc>gV
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" New Commands
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Create tags file
-" ^] jumps to tag under cursor
-" g^] for ambiguous tags
-" ^t jumps up tag stack
-command! MakeTags !ctags -R .
+vnoremap kj <esc>gV
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Spacing
@@ -212,9 +206,9 @@ set listchars=tab:>\ ,trail:*,extends:#,nbsp:.
 set tabstop=4
 " When indenting with '>', use 4 spaces
 set shiftwidth=4
-" Set number of spaces inserted and deleted when <Tab> is pressed
+" Set number of spaces inserted and deleted when <tab> is pressed
 set softtabstop=4
-" Insert `tabstop` number of spaces when pressing <Tab>
+" Insert `tabstop` number of spaces when pressing <tab>
 set expandtab
 " Round indent to multiples of shiftwidth
 set shiftround
@@ -265,20 +259,20 @@ set showcmd
 " Color column w/o column (yells at you for any line over 80 characters long)
 au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
-" Automatically save and load views (good for saving folds)
+" Automatically save and load views
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 
-" Move to windows easier with <C-h/j/k/l>
-" and move around windows easier with <Left/Down/Up/Right>
-nnoremap <Left> <C-w>H
-nnoremap <Down> <C-w>J
-nnoremap <Up> <C-w>K
-nnoremap <Right> <C-w>L
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+" Move to windows easier with <c-h/j/k/l>
+" and move around windows easier with <left/down/up/right>
+nnoremap <Left> <c-w>H
+nnoremap <Down> <c-w>J
+nnoremap <Up> <c-w>K
+nnoremap <Right> <c-w>L
+nnoremap <C-h> <c-w>h
+nnoremap <C-j> <c-w>j
+nnoremap <C-k> <c-w>k
+nnoremap <C-l> <c-w>l
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Miscellaneous
@@ -287,10 +281,13 @@ nnoremap <C-l> <C-w>l
 " Turn off modelines
 set modelines=0
 
+" Enable buffer hiding without saving
+set hidden
+
 " Vim's auto indentation feature does not work
 " properly with text copied from outside of Vim.
-" Press the <F2> key to toggle paste mode on/off.
-set pastetoggle=<F2>
+" Press the <f2> key to toggle paste mode on/off.
+set pastetoggle=<f2>
 " Make clipboard have expected behavior
 set clipboard=unnamed
 
