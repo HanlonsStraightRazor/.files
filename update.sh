@@ -1,16 +1,17 @@
-#!/bin/bash
+#!/bin/sh
 
 ################################################################################
 # Sets up or updates this repo.
 ################################################################################
 
-# Install Vundle and all plugins (if needed)
-if [ ! -d bundle ]; then
-  git clone https://github.com/VundleVim/Vundle.vim.git bundle/Vundle.vim
-  vim +PluginInstall +qall
+# Install vim-plug and all plugins (if needed)
+if [ ! -f 'autoload/plug.vim' ]; then
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    vim +PlugInstall +qall
 else
-  # Pull new configuration changes
-  git pull
-  # Update plugins and remove unused ones
-  vim +PluginClean! +PluginInstall! +qall
+    # Update Vim configuration
+    git pull
+    # Update vim-plug and plugins and remove unused ones
+    vim +PlugUpgrade +PlugClean! +PlugUpdate +qall
 fi

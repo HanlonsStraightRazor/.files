@@ -17,67 +17,36 @@ hi Normal guibg=NONE ctermbg=NONE
 " Plugin Installation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Be iMproved, required
-set nocompatible
-" Required
-filetype off
-
-
-" Set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" Alternatively, pass a path where Vundle should install plugins
-" Call vundle#begin('~/some/path/here')
-
-" Let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" Initialize plugins
+call plug#begin('~/.vim/plugged')
 
 " Lightline status bar
-Plugin 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 
 " tComment commenter
-Plugin 'tomtom/tcomment_vim'
+Plug 'tomtom/tcomment_vim'
 
-" Supertab for insert mode tab completion
-" Plugin 'ervandew/supertab'
+" vim-surround for surround things with other things
+Plug 'tpope/vim-surround'
 
-" Surround.vim for surround things with other things
-" Works via adjective 's' in normal mode
-" Ex. cs"' changes surrounding "s to 's
-Plugin 'tpope/vim-surround'
-
-" Tagbar for viewing dynamically generated class outlines
-Plugin 'majutsushi/tagbar'
+" Tagbar for viewing dynamically generated outlines
+Plug 'majutsushi/tagbar'
 
 " fzf for fuzzy file finding
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 " AsyncRun for asyncronous jobs
-Plugin 'skywind3000/asyncrun.vim'
+Plug 'skywind3000/asyncrun.vim'
 
 " Vim-LaTeX for a better TeX writing process
-Plugin 'vim-latex/vim-latex'
+Plug 'vim-latex/vim-latex'
 
 " Use pywal colorscheme
-Plugin 'dylanaraps/wal.vim'
+Plug 'dylanaraps/wal.vim'
 
 " All Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-" filetype plugin on
-
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!`
-"                     to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins;
-"                     append `!` to auto-approve removal
-"
-" See :h vundle for more details or wiki for FAQ
-" Put non-Plugin stuff after this line
+call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Settings
@@ -92,13 +61,6 @@ set noshowmode
 let g:lightline={
   \ 'colorscheme' : 'wombat',
   \ }
-
-" tComment basic key bindings
-" gc{motion}         :: Toggle comments (for small comments within one line
-"                       the &filetype_inline style will be used, if defined)
-" gc<count>c{motion} :: Toggle comment with count argument
-"                       (see|tcomment#Comment()|)
-" gcc                :: Toggle comment for the current line
 
 " Wal
 " Set colorscheme to the one provided by pywal
@@ -144,7 +106,6 @@ set wildmenu
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Plugins
-"
 " Toggle Netrw
 nnoremap <leader>n :Lex<cr>
 " Toggle Tagbar
@@ -260,8 +221,8 @@ set showcmd
 au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
 " Automatically save and load views
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview
+au BufWinLeave *.* mkview
+au BufWinEnter *.* silent loadview
 
 " Move to windows easier with <c-h/j/k/l>
 " and move around windows easier with <left/down/up/right>
@@ -269,10 +230,10 @@ nnoremap <Left> <c-w>H
 nnoremap <Down> <c-w>J
 nnoremap <Up> <c-w>K
 nnoremap <Right> <c-w>L
-nnoremap <C-h> <c-w>h
-nnoremap <C-j> <c-w>j
-nnoremap <C-k> <c-w>k
-nnoremap <C-l> <c-w>l
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Miscellaneous
