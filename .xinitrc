@@ -1,18 +1,20 @@
-################################################################################
-# My .xprofile
-################################################################################
-#   ____ ____  _                       ____ _              _     _
-#  / ___/ ___|| |__   __ _ _ __ _ __  / ___| |__   ___  __| | __| | __ _ _ __
-# | |   \___ \| '_ \ / _` | '__| '_ \| |   | '_ \ / _ \/ _` |/ _` |/ _` | '__|
-# | |___ ___) | | | | (_| | |  | |_) | |___| | | |  __/ (_| | (_| | (_| | |
-#  \____|____/|_| |_|\__,_|_|  | .__/ \____|_| |_|\___|\__,_|\__,_|\__,_|_|
-#                              |_|
-#
-################################################################################
-################################################################################
+# WARNING: THESE MASSIVELY SLOW DOWN GIT COMMITS.
+# The Gentoo Wiki recommends these for use with the nm-applet,
+# but the lag is too annoying for me.
+# Ensure dbus is either already running, or safely start it
+# if [[ -z "${DBUS_SESSION_BUS_ADDRESS}" ]]
+# then
+#     eval $(dbus-launch --sh-syntax --exit-with-session)
+# fi
 
-# Set screen brightness at 50%
-xrandr --output eDP1 --brightness 0.5
+# Make the keyring daemon ready to communicate with nm-applet
+# export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
+
+# Restore previously saved screen brightness
+light -I
+
+# Start Network Manager GTK applet
+nm-applet &
 
 # Start compositor (for transparency)
 picom &
@@ -20,8 +22,11 @@ picom &
 # Hide mouse after 3 seconds of inactivity
 unclutter -idle 3 &
 
-# Fix Vim colors
-USRRESOURCES=$HOME/.Xresources
+# Turn on num lock
+numlockx &
+
+# Activate custom X keybindings
+xbindkeys &
 
 # Build font information cache files
 fc-cache -vf
@@ -32,8 +37,5 @@ xrdb ~/.Xresources
 # Set random background image
 feh --bg-fill --randomize ~/.wallpaper
 
-# Turn on num lock
-numlockx
-
-# Start awesome window manager
-exec awesome
+# Start i3
+exec dbus-launch --exit-with-session i3

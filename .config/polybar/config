@@ -1,0 +1,300 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Colors
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[colors]
+; Use xrdb colors
+; Backup (hardcoded) scheme is Brogrammer
+background = ${xrdb:color0:#000000}
+background-alt = ${xrdb:color8:#D6DBE5}
+foreground = ${xrdb:color7:#D6DBE5}
+foreground-alt = ${xrdb:color15:#FFFFFF}
+primary = ${xrdb:color2:#2DC55E}
+primary-alt = ${xrdb:color10:#1DD361}
+secondary = ${xrdb:color3:#ECBA0F}
+secondary-alt = ${xrdb:color11:#F3BD09}
+alert = ${xrdb:color1:#F81118}
+alert-alt = ${xrdb:color9:#DE352E}
+volume_foreground_0 = ${xrdb:color14:#0F7DDB}
+volume_foreground_1 = ${xrdb:color10:#1DD361}
+volume_foreground_2 = ${xrdb:color1:#F81118}
+volume-muted = ${xrdb:color5:#4E5AB7}
+temperature = ${xrdb:color9:#DE352E}
+cpu = ${xrdb:color13:#5350B9}
+memory = ${xrdb:color12:#1081D6}
+battery_discharging = ${xrdb:color11:#F3BD09}
+battery_charging = ${xrdb:color2:#2DC55E}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Bar for i3wm
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[bar/bar_i3]
+; Don't put the bar at the bottom of the screen
+bottom = false
+; Prefer fixed center for the module-center block
+fixed-center = true
+; Take up entire screen width and be 26 pixels high
+width = 100%
+height = 26
+; Rounds corners, use with rounded window borders
+; radius = 6
+; Background color
+background = ${colors.background}
+; Foreground color
+foreground = ${colors.foreground}
+; Under-/overline pixel size and color
+line-size = 2
+line-color = ${colors.alert}
+; Border sizes
+border-top-size = 6
+border-left-size = 6
+border-right-size = 9
+; Spaces at the beginning and end of bar
+padding-left = 2
+padding-right = 3
+; Spaces before and after each module
+module-margin = 2
+; Fonts
+font-0 = xft:monospace:size=9:antialias=true;0
+font-1 = xft:DejaVu Sans Mono:pixelsize=9:antialias=true;0
+; Included modules and placement on the bar
+modules-left = i3
+modules-center = date
+modules-right = backlight audio temperature cpu memory battery
+; Name of window manager
+wm-name = i3
+; Locale
+locale = en_US.UTF-8
+; Position of system tray
+tray-position = right
+; Shift contents when tray changes
+tray-detached = false
+; Tray background
+tray-background = ${colors.background}
+; Pad sized of each tray icon
+tray-padding = 2
+; Tray offset
+tray-offset-x = 3
+; Set to zero to let polybar calculate font DPI from screen size
+dpi-x = 0
+dpi-y = 0
+; Disable inter-process messaging
+enable-ipc = false
+; Adjust cursor
+cursor-click = pointer
+cursor-scroll = ns-resize
+; Set scrolling functions to i3 ones
+scroll-up = "#i3.prev"
+scroll-down = "#i3.next"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; i3
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[module/i3]
+type = internal/i3
+; Only show workspaces defined on the same output as the bar
+; Useful with multiple monitors
+pin-workspaces = true
+; Don't split workspace name on ':'
+strip-wsnumbers = false
+; Sort workspaces by index instead of output
+index-sort = true
+; Click to focus on workspace
+enable-click = true
+; Scroll to cycle workspaces
+enable-scroll = true
+; Don't wrap around to first/last workspace when scrolling
+wrapping-scroll = false
+; Set scroll direction to normal
+reverse-scroll = false
+; Set label format
+format = <label-state> <label-mode>
+; Set label mode padding
+label-mode-padding = 2
+; Label mode background and foreground
+label-mode-background = ${colors.primary}
+label-mode-foreground = ${colors.background}
+; Focused label display
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = ${self.label-mode-padding}
+; Unfocused label display
+label-unfocused = %index%
+label-unfocused-padding = ${self.label-mode-padding}
+; Visible label display
+label-visible = %index%
+; label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+; Urgent label display
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = ${self.label-focused-padding}
+; Label seperator
+label-separator = |
+label-seperator-padding = 0
+label-seperator-foreground = ${self.label-mode-forground}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Date
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[module/date]
+type = internal/date
+; Update label every second
+interval = 1
+; Time format
+time = %H:%M
+; Display date as alternate time
+; Click to switch between the two
+time-alt = %m/%d/%Y
+; Actual display
+label = %time%
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Backlight (custom)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Note: This had to be custom because xbacklight quit working for some reason
+; Uses 'light' utility
+
+[module/backlight]
+; Custom module type
+type = custom/script
+; Update label every second
+interval = 1
+; Fetch current brightness
+exec = light | awk -F . '{ print $1 }'
+; Output current brightness between angle brackets
+label = ⟨%output%%⟩
+; Just output label
+format = <label>
+; Scrolling up increases screen brightness
+scroll-up = light -A 2
+; Scrolling down decreases screen brightness
+scroll-down = light -U 2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Audio
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[module/audio]
+; Use pulseaudio for audio
+type = internal/pulseaudio
+; Use this audio card
+sink = alsa_output.pci-0000_00_1f.3.analog-stereo
+; Increase and decrease volume in 5 point increments
+interval = 5
+; Display scroll bar and percentage label
+format-volume = <bar-volume> <label-volume>
+; Show volume as percentage
+label-volume = %percentage%%
+; Show 'muted' when volume is muted
+label-muted = muted
+; Text color for muted label
+label-muted-foreground = ${colors.volume-muted}
+; Volume bar width
+bar-volume-width = 12
+; Volume bar level colors
+bar-volume-foreground-0 = ${colors.volume_foreground_0}
+bar-volume-foreground-1 = ${colors.volume_foreground_0}
+bar-volume-foreground-2 = ${colors.volume_foreground_1}
+bar-volume-foreground-3 = ${colors.volume_foreground_1}
+bar-volume-foreground-4 = ${colors.volume_foreground_1}
+bar-volume-foreground-5 = ${colors.volume_foreground_1}
+bar-volume-foreground-6 = ${colors.volume_foreground_2}
+; Make the left side of the bar a uniform color
+bar-volume-gradient = false
+; Make the slider a pipe symbol
+bar-volume-indicator = |
+; Volume indicator font size
+bar-volume-indicator-font = 2
+; Bar itself is a series of long dashes
+bar-volume-fill = ─
+; Bar font size
+bar-volume-fill-font = 2
+; Bar empty is the same as the regular bar...
+bar-volume-empty = ${self.bar-volume-fill}
+bar-volume-empty-font = ${self.bar-volume-fill-font}
+; ...except for the forground
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Temperature
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[module/temperature]
+type = internal/temperature
+; Use the first core's temperature as overall temperature
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input
+; Accurate to the degree
+interval = 1
+; Warn if the temperature meets or exceeds 80 degrees Celsius
+warn-temperature = 80
+; Show temperature in degrees Fahrenheit
+label = %temperature-f%
+; Just show temperature label
+format = <label>
+; Set underline color to red
+format-underline = ${colors.temperature}
+; If it's a at or above warning temperature, still show regular label...
+label-warn = %temperature-f%
+format-warn = <label-warn>
+format-warn-underline = ${self.format-underline}
+; ...but make the text a different color
+label-warn-foreground = ${colors.secondary}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; CPU
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[module/cpu]
+type = internal/cpu
+; Update every second
+interval = 1
+; Set underline color
+format-underline = ${colors.cpu}
+; Show label as a percentage
+label = %percentage%%
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Memory
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[module/memory]
+type = internal/memory
+; Update every second
+interval = 1
+; Set underline color
+format-underline = ${colors.memory}
+; Show label as percentage
+label = %percentage_used%%
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Battery
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[module/battery]
+type = internal/battery
+; Battery and adapter
+; List batteries with 'ls -1 /sys/class/power_supply/'
+battery = BAT1
+adapter = ACAD
+; Update every second
+poll-interval = 1
+; Consider it full at 99%
+full-at = 99
+format-discharging-underline = ${colors.battery_discharging}
+format-charging-underline = ${colors.battery_charging}
+format-full-underline = ${self.format-charging-underline}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[settings]
+; Reload upon receiving XCB_RANR_SCREEN_CHANGE_NOTIFY events
+screenchange-reload = true

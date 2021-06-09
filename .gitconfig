@@ -1,11 +1,25 @@
 [user]
-  name = CSharpCheddar
-  email = muellermartin98@gmail.com
+    name = HanlonsStraightRazor
+    email = muellermartin98@gmail.com
+    signingKey = E7D5A95EA83FFDCC
 [core]
-  editor = vim
+    editor = vim
 [alias]
-  flog = log --oneline --decorate --graph
+    flog = log --oneline --decorate --graph
+    ldiff = diff HEAD^ HEAD
 [merge]
-  tool = vimdiff
+    tool = vimdiff
+[diff]
+    tool = vimdiff
 [credential]
-  helper = cache
+    helper = cache
+[rerere]
+    enabled = true
+[sendemail]
+    annotate = true
+[mergetool]
+    keepBackup = false
+[commit]
+    gpgSign = true
+[tag]
+    gpgSign = true

@@ -1,13 +1,12 @@
 ################################################################################
-# My .bashrc
-################################################################################
-
-################################################################################
 # Important
 ################################################################################
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+# Needed for gpg-agent
+export GPG_TTY=$(tty)
 
 ################################################################################
 # Aliases
@@ -16,20 +15,29 @@
 # 3 characters = too much typing
 alias v='vim'
 
+# 6 characters is also too much typing
+alias r='ranger'
+
 # Update all pip packages
 alias pip-update='pip list --outdated --format=freeze | grep -v "^\-e" | cut -d = -f 1 | xargs -n1 pip install -U --user'
 
+# Colorful less
+alias less='less -R'
+
 # Colorful ls
-alias ls='ls --color=auto'
+alias ls='ls --color=always'
 
 # Colorful long ls w/ hidden files
-alias ll='ls --color=auto -lAh'
+alias ll='ls --color=always -lAh'
 
 # Colorful long ls w/o hidden files
-alias lsl='ls --color=auto -lh'
+alias lsl='ls --color=always -lh'
 
 # Always run df with -h
 alias df='df -h'
+
+# Always run du with -h
+alias du='du -h'
 
 # Load .Xresources
 alias xup='xrdb ~/.Xresources'
@@ -56,3 +64,6 @@ alias dot='/usr/bin/git --git-dir=$HOME/.files --work-tree=$HOME'
 # For fzf completions
 source /usr/share/bash-completion/completions/fzf
 source /usr/share/fzf/key-bindings.bash
+
+# Configure fuck
+eval "$(thefuck --alias)"
