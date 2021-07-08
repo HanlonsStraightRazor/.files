@@ -1,14 +1,4 @@
 ################################################################################
-# Important
-################################################################################
-
-# This file is sourced by bash for login shells.  The following line
-# runs your .bashrc and is recommended by the bash info pages.
-if [[ -f ~/.bashrc ]] ; then
-  . ~/.bashrc
-fi
-
-################################################################################
 # Environment Variables
 ################################################################################
 
@@ -32,3 +22,13 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 # Set login prompt
 PS1='\[\033]0;\u@\h:\w\007\]\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
+
+################################################################################
+# Other
+################################################################################
+
+# This file is sourced by bash for login shells.  The following line
+# runs your .bashrc and is recommended by the bash info pages.
+if [[ -f ~/.bashrc ]] ; then
+  . ~/.bashrc
+fi
