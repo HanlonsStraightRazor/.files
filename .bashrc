@@ -19,7 +19,7 @@ alias v='vim'
 alias r='ranger'
 
 # Update all pip packages
-alias pip-update='pip list --outdated --format=freeze | grep -v "^\-e" | cut -d = -f 1 | xargs -n1 pip install -U --user'
+alias pip-update='pip list -o --format=freeze | ./.scripts/pip-update.awk'
 
 # Colorful less
 alias less='less -R'
