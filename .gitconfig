@@ -1,7 +1,7 @@
 [user]
     name = HanlonsStraightRazor
     email = muellermartin98@gmail.com
-    signingKey = E7D5A95EA83FFDCC
+    signingKey = 0BEA0920D64FE53F
 [core]
     editor = vim
 [alias]
