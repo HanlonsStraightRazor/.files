@@ -37,5 +37,8 @@ xrdb ~/.Xresources
 # Set random background image
 feh --bg-fill --randomize ~/.wallpaper
 
+# Start Redshift
+redshift &
+
 # Start i3
 exec dbus-launch --exit-with-session i3
