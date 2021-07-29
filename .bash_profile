@@ -20,6 +20,9 @@ export USRRESOURCES=$HOME/.Xresources
 # Theme QT apps with qt5ct
 export QT_QPA_PLATFORMTHEME=qt5ct
 
+# Run Node stuff locally
+export NODE_ENV=local
+
 # Set login prompt
 PS1='\[\033]0;\u@\h:\w\007\]\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
 
