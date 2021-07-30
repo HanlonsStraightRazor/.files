@@ -39,9 +39,6 @@ Plug 'junegunn/fzf.vim'
 " AsyncRun for asyncronous jobs
 Plug 'skywind3000/asyncrun.vim'
 
-" Vim-LaTeX for a better TeX writing process
-Plug 'vim-latex/vim-latex'
-
 " Use pywal colorscheme
 Plug 'dylanaraps/wal.vim'
 
