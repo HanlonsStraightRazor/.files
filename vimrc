@@ -145,7 +145,7 @@ nnoremap <leader>j <c-j>
 " Other Remaps
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Remap to kj <esc> in insert mdoe
+" Remap to kj <esc> in insert mode
 inoremap kj <esc>
 " Remap to kj Ctrl-c in command mode
 cnoremap kj <c-c>
