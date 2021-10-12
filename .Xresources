@@ -2,7 +2,7 @@
 ! General Appearance
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-URxvt.font: xft:JetBrains Mono:size=12
+URxvt.font: xft:monospace:size=12
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.internalBorder: 4
