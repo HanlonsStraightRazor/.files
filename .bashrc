@@ -18,9 +18,6 @@ alias v='vim'
 # 6 characters is also too much typing
 alias r='ranger'
 
-# Update all pip packages
-alias pip-update='pip list -o --format=freeze | ~/.scripts/pip-update.awk'
-
 # Colorful less
 alias less='less -R'
 
