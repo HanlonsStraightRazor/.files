@@ -167,7 +167,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 # start dmenu
 bindsym $mod+p exec dmenu_run
 # start Brave
-bindsym $mod+b exec brave-bin
+# bindsym $mod+b exec brave-bin
+bindsym $mod+b exec firefox
 
 ################################################################################
 # Workspace Labels
