@@ -40,27 +40,22 @@ alias du='du -h'
 alias xup='xrdb ~/.Xresources'
 
 # Dotfiles bare repo
-alias dot='/usr/bin/git --git-dir=$HOME/.files --work-tree=$HOME'
-
-################################################################################
-# Shell Prompt (starship)
-################################################################################
-
-# Set prompt (disabled for now)
-# if [ `command -v starship` ]
-# then
-#   eval "$(starship init bash)"
-# else
-#  PS1='\[\e[1m\]\u@\h \W$ \[\e[0m\]'
-# fi
+alias dot='git --git-dir="$HOME/.files" --work-tree="$HOME"'
 
 ################################################################################
 # Other Stuff
 ################################################################################
 
 # For fzf completions
-source /usr/share/bash-completion/completions/fzf
-source /usr/share/fzf/key-bindings.bash
+if [[ -e "/usr/share/bash-completion/completions/fzf" &&
+        -e "/usr/share/fzf/key-bindings.bash" ]]
+then
+    source /usr/share/bash-completion/completions/fzf
+    source /usr/share/fzf/key-bindings.bash
+fi
 
 # Configure fuck
-eval "$(thefuck --alias)"
+if [[ $(command -v thefuck) ]]
+then
+    eval "$(thefuck --alias)"
+fi
