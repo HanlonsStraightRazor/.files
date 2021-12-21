@@ -10,23 +10,27 @@
 # Make the keyring daemon ready to communicate with nm-applet
 # export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
 
-# Restore previously saved screen brightness
-light -I
-
 # Start Network Manager GTK applet
 nm-applet &
 
 # Start compositor (for transparency)
 picom &
 
+# Start Redshift
+redshift &
+
 # Hide mouse after 3 seconds of inactivity
 unclutter -idle 3 &
 
 # Turn on num lock
-numlockx &
+numlockx
 
 # Activate custom X keybindings
-xbindkeys &
+xbindkeys
+
+# Disable screen timeout & power saving
+xset s off
+xset -dpms
 
 # Build font information cache files
 fc-cache -vf
@@ -36,9 +40,6 @@ xrdb ~/.Xresources
 
 # Set random background image
 feh --bg-fill --randomize ~/.wallpaper
-
-# Start Redshift
-redshift &
 
 # Start i3
 exec dbus-launch --exit-with-session i3
