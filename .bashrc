@@ -39,6 +39,9 @@ alias du='du -h'
 # Load .Xresources
 alias xup='xrdb ~/.Xresources'
 
+# Show maximum gpg key info
+alias keys='gpg --list-keys --fingerprint --fingerprint --keyid-format=long'
+
 # Dotfiles bare repo
 alias dot='git --git-dir="$HOME/.files" --work-tree="$HOME"'
 
