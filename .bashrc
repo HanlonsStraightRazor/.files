@@ -43,7 +43,7 @@ alias xup='xrdb ~/.Xresources'
 alias keys='gpg --list-keys --fingerprint --fingerprint --keyid-format=long'
 
 # Dotfiles bare repo
-alias dot='git --git-dir="$HOME/.files" --work-tree="$HOME"'
+alias dotfiles='git --git-dir="$HOME/.files" --work-tree="$HOME"'
 
 ################################################################################
 # Other Stuff
