@@ -12,7 +12,7 @@ export EDITOR=vim
 export TERMINAL=urxvt
 
 # Add .scripts directory to path
-export PATH=$PATH:$HOME/.scripts:$HOME/.local/bin
+export PATH=$PATH:$HOME/.scripts:$HOME/.local/bin:$HOME/.cargo/bin
 
 # Fix Vim colors
 export USRRESOURCES=$HOME/.Xresources
