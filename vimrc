@@ -20,6 +20,10 @@ hi Normal guibg=NONE ctermbg=NONE
 " Initialize plugins
 call plug#begin('~/.vim/plugged')
 
+" Syntax highlighting
+Plug 'rust-lang/rust.vim'
+Plug 'nfnty/vim-nftables'
+
 " Lightline status bar
 Plug 'itchyny/lightline.vim'
 
