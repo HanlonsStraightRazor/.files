@@ -12,8 +12,9 @@ export GPG_TTY=$(tty)
 # Aliases
 ################################################################################
 
-# 3 characters = too much typing
+# Vim aliases
 alias v='vim'
+alias vs='vim -S'
 
 # 6 characters is also too much typing
 alias r='ranger'
