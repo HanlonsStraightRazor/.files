@@ -10,6 +10,8 @@ autocmd! bufwritepost $MYVIMRC source %
 
 " Turn on syntax highlighting
 syntax enable
+" Enable loading plugin and indent files for specific file types
+filetype plugin indent on
 " Enable transparent background
 hi Normal guibg=NONE ctermbg=NONE
 
@@ -20,31 +22,32 @@ hi Normal guibg=NONE ctermbg=NONE
 " Initialize plugins
 call plug#begin('~/.vim/plugged')
 
-" Syntax highlighting
+" Use .Xresources color scheme (requires pywal)
+Plug 'dylanaraps/wal.vim'
+
+" Syntax checking and highlighting
+Plug 'vim-syntastic/syntastic'
 Plug 'rust-lang/rust.vim'
 Plug 'nfnty/vim-nftables'
 
-" Lightline status bar
+" Status bar
 Plug 'itchyny/lightline.vim'
 
-" tComment commenter
-Plug 'tomtom/tcomment_vim'
-
-" vim-surround for surround things with other things
-Plug 'tpope/vim-surround'
-
-" Tagbar for viewing dynamically generated outlines
+" View dynamically generated outlines
 Plug 'majutsushi/tagbar'
 
-" fzf for fuzzy file finding
+" Fuzzy file finding
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
-" AsyncRun for asyncronous jobs
-Plug 'skywind3000/asyncrun.vim'
+" Comment manipulation
+Plug 'tomtom/tcomment_vim'
 
-" Use pywal colorscheme
-Plug 'dylanaraps/wal.vim'
+" Surround for surround things with other things
+Plug 'tpope/vim-surround'
+
+" Asynchronous job management
+Plug 'skywind3000/asyncrun.vim'
 
 " All Plugins must be added before the following line
 call plug#end()
@@ -56,19 +59,19 @@ call plug#end()
 " Lightline
 " Show status line
 set laststatus=2
-" Get rid of -- INSERT -- (already in lightline)
+" Get rid of -- INSERT -- (already in Lightline)
 set noshowmode
-" Set Lightline colorscheme
+" Set Lightline color scheme to something neutral
 let g:lightline={
   \ 'colorscheme' : 'wombat',
   \ }
 
 " Wal
-" Set colorscheme to the one provided by pywal
+" Set color scheme to the one provided by pywal
 colorscheme wal
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Netrw Configurations
+" Netrw Configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Hide dotfiles
@@ -97,7 +100,7 @@ autocmd FileType netrw setl bufhidden=delete
 
 " Don't change directory to the current buffer when opening files
 set noautochdir
-" Search into subfolders and do tab-completion
+" Search into subdirectories and do tab-completion
 set path+=**
 " Display matching files on tab-complete
 set wildmenu
@@ -115,7 +118,7 @@ nnoremap <leader>t :TagbarToggle<cr>
 nnoremap <leader>b :Buffers<cr>
 " List files with fzf
 nnoremap <leader>o :Files<cr>
-" Run make asyncronously
+" Run make asynchronously
 nnoremap <leader>m :w<cr>:AsyncRun make<cr>
 
 " Toggle spell checker
@@ -135,9 +138,6 @@ nnoremap <leader>* *<c-O>:%s///gn<cr>
 " Toggle quickfix window
 nnoremap <leader>c :cw<cr>
 
-" Quit
-nnoremap <leader>q :q<cr>
-
 " Need to remap redraw for later <c-l> remapping to work
 nnoremap <leader>l <c-l>
 " Need to unmap <c-j> too
@@ -146,7 +146,7 @@ let g:C_Ctrl_j='off'
 nnoremap <leader>j <c-j>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Other Remaps
+" Other Maps
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Remap to kj <esc> in insert mode
@@ -160,7 +160,7 @@ vnoremap kj <esc>gV
 " Spacing
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Display different types of white spaces
+" Display different types of whitespace
 set list
 set listchars=tab:>\ ,trail:*,extends:#,nbsp:.
 
@@ -216,6 +216,9 @@ set ttyfast
 
 " Show current line number and relative line numbers
 set number relativenumber
+
+" Remove pipe characters between vertical splits
+set fillchars+=vert:\ 
 
 " Highlight matching pairs of angle brackets.
 " Use the '%' character to jump between them.
