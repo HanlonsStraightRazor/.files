@@ -49,10 +49,12 @@ for_window [class=".*"] border pixel 1
 # Add 6 pixel gaps
 gaps inner 6
 
-# Make Brave download dialog fullscreen
-for_window [class="Brave-bin" title="Save File"] fullscreen enable
+# Make Firefox download dialog fullscreen
+for_window [class="Firefox" title="Save File"] fullscreen enable
 # Make screenshot application fullscreen
 for_window [class="screengrab"] fullscreen enable
+# Make Firefox appear on workspace 9
+assign [class="Firefox"] $ws9
 
 ################################################################################
 # Control Keybindings
@@ -162,12 +164,11 @@ floating_modifier $mod
 # Application Keybindings
 ################################################################################
 
-# start urxvt
+# start terminal
 bindsym $mod+Return exec i3-sensible-terminal
 # start dmenu
 bindsym $mod+p exec dmenu_run
-# start Brave
-# bindsym $mod+b exec brave-bin
+# start firefox
 bindsym $mod+b exec firefox
 
 ################################################################################
