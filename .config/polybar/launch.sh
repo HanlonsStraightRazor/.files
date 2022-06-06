@@ -1,15 +1,23 @@
 #!/usr/bin/env bash
 
-# Terminate already running bar instances
-# and wait for them to terminate
+# Terminate already running polybar instances
 killall -q polybar
-while pgrep -u $UID -x polybar > /dev/null
-do
-  sleep 0.5
-done
+
+# Make sure the correct temperature is displayed
+# The name of the core to watch should be in a file called "name"
+temp_path=$(
+    for i in /sys/class/hwmon/hwmon*/temp*_input
+    do
+        if [[ $(<$(dirname $i)/name) == $(<~/.config/polybar/name) ]]
+        then
+            realpath $i
+            break
+        fi
+    done
+)
+# rm -f ~/.config/polybar/temp
+# ln -s -T $temp_path ~/.config/polybar/temp
+sed -i "s|hwmon-path\s*=.*|hwmon-path = $temp_path|" ~/.config/polybar/config
 
 # Launch bar_i3
 polybar bar_i3 & disown
-
-# Display message
-echo "Polybar launched..."
