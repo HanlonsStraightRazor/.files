@@ -1,0 +1,62 @@
+#!/bin/bash
+
+################################################################################
+# Display all permitted types, non-permitted types, and total number of denies
+# from SELinux in the kernel's ring buffer.
+################################################################################
+
+IFS=$'\n'
+
+# Print $1 on the first line, then a number of
+# dashes equal to the length of $1 on the second line
+print_header() {
+    echo "$1"
+    for (( index=0; $index<${#1}; index++ ))
+    do
+        printf "-"
+    done
+    echo
+}
+
+# Print AVC denials matching the regex in $1 in the form:
+# source_context_type -> target_context_type
+get_types() {
+    for error in $(dmesg | grep -E "avc:\s+denied" | grep -E "$1")
+    do
+        sscript='{for(i=1;i<=NF;i++){if($i~/scontext/){print($i);exit}}}'
+        tscript='{for(i=1;i<=NF;i++){if($i~/tcontext/){print($i);exit}}}'
+        scontext=$(awk $sscript <<< $error)
+        tcontext=$(awk $tscript <<< $error)
+        if [[ $scontext && $tcontext ]]
+        then
+            printf "%s -> %s\n" \
+                $(cut -d: -f3 <<< $scontext) \
+                $(cut -d: -f3 <<< $tcontext)
+        fi
+    done
+}
+
+# Print AVC denial types where permissive matches the regex in $1
+print_permissive() {
+    types=$(get_types "permissive=$1")
+    if (( ${#types[@]} ))
+    then
+        if [[ ${types[0]} ]]
+        then
+            for unique_type in $(sort <<< $types | uniq -c)
+            do
+                echo $unique_type
+            done
+            echo "Total: $(wc -l <<< $types)"
+        else
+            echo "Total: 0"
+        fi
+        echo
+    fi
+}
+
+print_header "Permitted"
+print_permissive 1
+
+print_header "Not permitted"
+print_permissive 0
