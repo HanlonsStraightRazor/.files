@@ -22,6 +22,21 @@ redshift &
 # Hide mouse after 3 seconds of inactivity
 unclutter -idle 3 &
 
+# Start keyboard and mouse configuration applet (if applicable)
+if [[ $(command -v polychromatic-tray-applet) ]]
+then
+    polychromatic-tray-applet &
+fi
+
+# Launch PipeWire using Gentoo's specific launcher (if installed)
+if [[ $(command -v gentoo-pipewire-launcher) ]]
+then
+    gentoo-pipewire-launcher &
+fi
+
+# Start keyboard and mouse configuration daemon
+openrazer-daemon
+
 # Turn on num lock
 numlockx
 
