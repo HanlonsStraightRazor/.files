@@ -17,7 +17,7 @@ temp_path=$(
 )
 # rm -f ~/.config/polybar/temp
 # ln -s -T $temp_path ~/.config/polybar/temp
-sed -i "s|hwmon-path\s*=.*|hwmon-path = $temp_path|" ~/.config/polybar/config
+sed -i "s|hwmon-path\s*=.*|hwmon-path = $temp_path|" ~/.config/polybar/config.ini
 
 # Launch bar_i3
 polybar bar_i3 & disown
