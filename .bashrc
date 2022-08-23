@@ -12,42 +12,26 @@ export GPG_TTY=$(tty)
 # Aliases
 ################################################################################
 
-# Vim aliases
+# Standard abbreviations
 alias v='vim'
-alias vs='vim -S'
-
-# 6 characters is also too much typing
 alias r='ranger'
+alias z='zathura'
 
-# Colorful less
+# Default flags
+alias df='df -h'
+alias du='du -h'
+alias ls='ls --color=always'
 alias less='less -R'
 
-# Colorful ls
-alias ls='ls --color=always'
-
-# Colorful long ls w/ hidden files
-alias ll='ls --color=always -lAh'
-
-# Colorful long ls w/o hidden files
-alias lsl='ls --color=always -lh'
-
-# Always run df with -h
-alias df='df -h'
-
-# Always run du with -h
-alias du='du -h'
-
-# Load .Xresources
+# Special abbreviations
+alias ll='ls --color=always -lAh' # w/ hidden files
+alias lsl='ls --color=always -lh' # w/o hidden files
 alias xup='xrdb ~/.Xresources'
-
-# Show maximum gpg key info
 alias keys='gpg --list-keys --fingerprint --fingerprint --keyid-format=long'
-
-# Dotfiles bare repo
 alias dotfiles='git --git-dir="$HOME/.files" --work-tree="$HOME"'
 
 ################################################################################
-# Other Stuff
+# Miscellaneous
 ################################################################################
 
 # For fzf completions
@@ -58,7 +42,7 @@ then
     source /usr/share/fzf/key-bindings.bash
 fi
 
-# Configure fuck
+# Configure command correction
 if [[ $(command -v thefuck) ]]
 then
     eval "$(thefuck --alias)"
