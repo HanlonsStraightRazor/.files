@@ -56,8 +56,10 @@
   Control + F10
 
 # Screenshot
-"screengrab -f"
-  Control + Home
+"screengrab --fullscreen"
+ Control + Home
+"screengrab --region"
+ Alt + Home
 
 
 ##################################
