@@ -51,8 +51,6 @@ gaps inner 6
 
 # Make Firefox download dialog fullscreen
 for_window [class="Firefox" title="Save File"] fullscreen enable
-# Make screenshot application fullscreen
-for_window [class="screengrab"] fullscreen enable
 # Make Firefox appear on workspace 9
 assign [class="Firefox"] $ws9
 
