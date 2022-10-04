@@ -49,10 +49,8 @@ for_window [class=".*"] border pixel 1
 # Add 6 pixel gaps
 gaps inner 6
 
-# Make Firefox download dialog fullscreen
-for_window [class="Firefox" title="Save File"] fullscreen enable
 # Make Firefox appear on workspace 9
-assign [class="Firefox"] $ws9
+assign [class="firefox-esr"] $ws9
 
 ################################################################################
 # Control Keybindings
