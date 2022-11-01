@@ -8,6 +8,7 @@
     flog = log --oneline --decorate --graph
     ldiff = diff HEAD^ HEAD
     please = push --force-with-lease
+    bugs = notes --ref bugs
 [merge]
     tool = vimdiff
 [diff]
