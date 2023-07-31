@@ -8,10 +8,6 @@ let mapleader=" "
 " Automatically reload vimrc when saved
 autocmd! bufwritepost $MYVIMRC source %
 
-" Turn on syntax highlighting
-syntax enable
-" Enable loading plugin and indent files for specific file types
-filetype plugin indent on
 " Enable transparent background
 hi Normal guibg=NONE ctermbg=NONE
 
@@ -55,6 +51,14 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Syntastic
+" Turn on syntax highlighting
+syntax enable
+" Enable loading plugin and indent files for specific file types
+filetype plugin indent on
+" Check Rust unit and integration tests when linting
+let g:rust_cargo_check_tests=1
 
 " Lightline
 " Show status line
