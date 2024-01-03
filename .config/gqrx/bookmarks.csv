@@ -1,0 +1,95 @@
+# Tag name          ;  color
+2m                  ; #c0c0c0
+CB                  ; #c0c0c0
+GMRS                ; #c0c0c0
+MURS                ; #c0c0c0
+WX                  ; #c0c0c0
+
+# Frequency ; Name                     ; Modulation          ;  Bandwidth; Tags
+    26965000; CB 1                     ; AM                  ;      10000; CB
+    26975000; CB 2                     ; AM                  ;      10000; CB
+    26985000; CB 3                     ; AM                  ;      10000; CB
+    27005000; CB 4                     ; AM                  ;      10000; CB
+    27015000; CB 5                     ; AM                  ;      10000; CB
+    27025000; CB 6                     ; AM                  ;      10000; CB
+    27035000; CB 7                     ; AM                  ;      10000; CB
+    27055000; CB 8                     ; AM                  ;      10000; CB
+    27065000; CB 9                     ; AM                  ;      10000; CB
+    27075000; CB 10                    ; AM                  ;      10000; CB
+    27085000; CB 11                    ; AM                  ;      10000; CB
+    27105000; CB 12                    ; AM                  ;      10000; CB
+    27115000; CB 13                    ; AM                  ;      10000; CB
+    27125000; CB 14                    ; AM                  ;      10000; CB
+    27135000; CB 15                    ; AM                  ;      10000; CB
+    27155000; CB 16                    ; AM                  ;      10000; CB
+    27165000; CB 17                    ; AM                  ;      10000; CB
+    27175000; CB 18                    ; AM                  ;      10000; CB
+    27185000; CB 19                    ; AM                  ;      10000; CB
+    27205000; CB 20                    ; AM                  ;      10000; CB
+    27215200; CB 21                    ; AM                  ;      10000; CB
+    27225000; CB 22                    ; AM                  ;      10000; CB
+    27235000; CB 24                    ; AM                  ;      10000; CB
+    27245000; CB 25                    ; AM                  ;      10000; CB
+    27255000; CB 23                    ; AM                  ;      10000; CB
+    27265000; CB 26                    ; AM                  ;      10000; CB
+    27275000; CB 27                    ; AM                  ;      10000; CB
+    27285000; CB 28                    ; AM                  ;      10000; CB
+    27295000; CB 29                    ; AM                  ;      10000; CB
+    27305000; CB 30                    ; AM                  ;      10000; CB
+    27315000; CB 31                    ; AM                  ;      10000; CB
+    27325000; CB 32                    ; AM                  ;      10000; CB
+    27335000; CB 33                    ; AM                  ;      10000; CB
+    27345000; CB 34                    ; AM                  ;      10000; CB
+    27355000; CB 35                    ; AM                  ;      10000; CB
+    27365000; CB 36                    ; AM                  ;      10000; CB
+    27375000; CB 37                    ; AM                  ;      10000; CB
+    27385000; CB 38                    ; AM                  ;      10000; CB
+    27395000; CB 39                    ; AM                  ;      10000; CB
+    27405000; CB 40                    ; AM                  ;      10000; CB
+   146520000; 2m Call                  ; WFM (stereo)        ;     160000; 2m
+   146940000; Rhinelander              ; WFM (stereo)        ;     160000; 2m
+   147120000; Tripoli                  ; WFM (stereo)        ;     160000; 2m
+   147195000; Three Lakes/Minocqua     ; WFM (stereo)        ;     160000; 2m
+   151820000; MURS 1                   ; Narrow FM           ;      11250; MURS
+   151880000; MURS 2                   ; Narrow FM           ;      11250; MURS
+   151940000; MURS 3                   ; Narrow FM           ;      11250; MURS
+   154570000; MURS 4                   ; WFM (stereo)        ;      20000; MURS
+   154600000; MURS 5                   ; WFM (stereo)        ;      20000; MURS
+   162400000; WX 1                     ; WFM (stereo)        ;      25000; WX
+   162425000; WX 2                     ; WFM (stereo)        ;      25000; WX
+   162450000; WX 3                     ; WFM (stereo)        ;      25000; WX
+   162475000; WX 4                     ; WFM (stereo)        ;      25000; WX
+   162500000; WX 5                     ; WFM (stereo)        ;      25000; WX
+   162525000; WX 6                     ; WFM (stereo)        ;      25000; WX
+   162550000; WX 7                     ; WFM (stereo)        ;      25000; WX
+   224540000; Three Lakes              ; WFM (stereo)        ;     160000; 2m
+   462550000; GMRS 15                  ; WFM (stereo)        ;      20000; GMRS
+   462562500; GMRS 1                   ; WFM (stereo)        ;      20000; GMRS
+   462575000; GMRS 16                  ; WFM (stereo)        ;      20000; GMRS
+   462587500; GMRS 2                   ; WFM (stereo)        ;      20000; GMRS
+   462600000; GMRS 17                  ; WFM (stereo)        ;      20000; GMRS
+   462612500; GMRS 3                   ; WFM (stereo)        ;      20000; GMRS
+   462625000; GMRS 18                  ; WFM (stereo)        ;      20000; GMRS
+   462637500; GMRS 4                   ; WFM (stereo)        ;      20000; GMRS
+   462650000; GMRS 19                  ; WFM (stereo)        ;      20000; GMRS
+   462662500; GMRS 5                   ; WFM (stereo)        ;      20000; GMRS
+   462675000; GMRS 20                  ; WFM (stereo)        ;      20000; GMRS
+   462687500; GMRS 6                   ; WFM (stereo)        ;      20000; GMRS
+   462700000; GMRS 21                  ; WFM (stereo)        ;      20000; GMRS
+   462712500; GMRS 7                   ; WFM (stereo)        ;      20000; GMRS
+   462725000; GMRS 22                  ; WFM (stereo)        ;      20000; GMRS
+   467550000; GMRS 15R                 ; WFM (stereo)        ;      20000; GMRS
+   467562500; GMRS 8                   ; Narrow FM           ;      12500; GMRS
+   467575000; GMRS 16R                 ; WFM (stereo)        ;      20000; GMRS
+   467587500; GMRS 9                   ; Narrow FM           ;      12500; GMRS
+   467600000; GMRS 17R                 ; WFM (stereo)        ;      20000; GMRS
+   467612500; GMRS 10                  ; Narrow FM           ;      12500; GMRS
+   467625000; GMRS 18R                 ; WFM (stereo)        ;      20000; GMRS
+   467637500; GMRS 11                  ; Narrow FM           ;      12500; GMRS
+   467650000; GMRS 19R                 ; WFM (stereo)        ;      20000; GMRS
+   467662500; GMRS 12                  ; Narrow FM           ;      12500; GMRS
+   467675000; GMRS 20R                 ; WFM (stereo)        ;      20000; GMRS
+   467687500; GMRS 13                  ; Narrow FM           ;      12500; GMRS
+   467700000; GMRS 21R                 ; WFM (stereo)        ;      20000; GMRS
+   467712500; GMRS 14                  ; Narrow FM           ;      12500; GMRS
+   467725000; GMRS 22R                 ; WFM (stereo)        ;      20000; GMRS
