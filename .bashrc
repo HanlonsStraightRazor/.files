@@ -24,8 +24,8 @@ alias ls='ls --color=always'
 alias less='less -R'
 
 # Special abbreviations
-alias ll='ls --color=always -lAh' # w/ hidden files
-alias lsl='ls --color=always -lh' # w/o hidden files
+alias ll='ls -lAh' # w/ hidden files
+alias lsl='ls -lh' # w/o hidden files
 alias xup='xrdb ~/.Xresources'
 alias keys='gpg --list-keys --fingerprint --fingerprint --keyid-format=long'
 alias dotfiles='git --git-dir="$HOME/.files" --work-tree="$HOME"'
