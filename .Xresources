@@ -11,6 +11,7 @@ URxvt.cursorUnderline: false
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.depth: 32
+URxvt.geometry: 400x400
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! Color Scheme (Frontend Fun Forest)
